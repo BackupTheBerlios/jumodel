@@ -1,0 +1,95 @@
+		/*  SqlMapClientTemplate sqlTemp=(SqlMapClientTemplate) SpringContext.getCtx().getBean("sqlMapClientTemplate");
+		  List<Quarter> kwatery=sqlTemp.queryForList("getKwatery", null);
+		  HibernateDaoSupport hdao= (HibernateDaoSupport) SpringContext.getCtx().getBean("hibernateDao");
+		  
+		  DetachedCriteria crit=DetachedCriteria.forClass(Quarter.class)
+		  .add(Restrictions.like("name", "%Hotel%"));
+		  
+		  Quarter ex=new Quarter();
+		  ex.setAddress("kozia");
+		  Example qexam=Example.create(ex);
+		  crit.add(qexam);
+		  crit.add(Restrictions.eq("type", null));
+		  
+		  List<Quarter> a=hdao.getHibernateTemplate().findByCriteria(crit);
+		  
+		  System.out.println("stop");
+		  
+		  
+		  
+		  List<Quarter> q=hdao.getHibernateTemplate().find("from Quarter");
+		  System.out.println(((Quarter)q.toArray()[0]).getOffers());
+		  log.info("info to info");
+		  System.out.println(q);*/
+		  /*ProductDaoImpl daoo= (ProductDaoImpl) SpringContext.getCtx().getBean("productDaoImpl");*/
+		  JpaDaoSupport dao=(JpaDaoSupport) SpringContext.getCtx().getBean("jpaDao");
+		  /*daoo.loadProductsByCategory("dasdsa");
+		    out.println("Hello, world!");
+		    Query ql=em.createQuery("select q from quarters q");
+		    List<Quarter> wynik=ql.getResultList();
+		    System.out.println("ąśćżź"+wynik);*/
+		    
+		   /* Context initCtx;
+			try {
+				initCtx = new InitialContext();
+				Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			    DataSource ds = (DataSource)
+			      envCtx.lookup("jdbc/TravelDB");
+
+			    Connection conn = ds.getConnection();
+			    ResultSet rs=conn.createStatement().executeQuery("select * from quarters");
+			    //out.println(rs);
+			    
+			    
+			    conn.close();
+			} catch (NamingException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		    
+		   // ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+			//WebApplicationContext context=WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
+			
+			SpringContext.setServletContext(getServletContext());
+			MyBean bean=(MyBean)SpringContext.getCtx().getBean("myBean");
+			DataSource dataSource=(DataSource)SpringContext.getCtx().getBean("dataSource");
+			
+			 Connection conn;
+			try {
+				conn = dataSource.getConnection();
+				ResultSet rs=conn.createStatement().executeQuery("select * from quarters");
+			    out.println(rs);
+			    
+			    conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			    
+		    out.println(bean.getName());*/
+		    
+		    
+		    SpringContext.setServletContext(getServletContext());
+		    /*SimpleJdbcDaoSupport dao=(SimpleJdbcDaoSupport) SpringContext.getCtx().getBean("simpleDao");
+		    //dao.getSimpleJdbcTemplate().query("select * from quarters", new ParameterizedRowMa
+			List<Map<String, Object>> resultList=dao.getSimpleJdbcTemplate().queryForList("select * from quarters",(Map<String,String>) null);
+			out.println(resultList);
+			for (Map<String, Object> map : resultList) {
+				out.println(map.get("QuarterID"));
+				out.println(map.get("Name"));
+				out.println(map.get("Luxury"));
+			}*/
+		    
+		   // JpaDaoSupport dao=(JpaDaoSupport) SpringContext.getCtx().getBean("jpaDao");
+		    /*List result=dao.getJpaTemplate().find("Select q from Quarter q");
+		    System.out.println(result);
+		    
+		    result=dao.getJpaTemplate().find("from Quarter");
+		    System.out.println(result);
+		    
+		    
+		    HashMap<String, Integer> map=new HashMap<String, Integer>();
+		    map.put("id", 1);
+		    result=dao.getJpaTemplate().findByNamedQueryAndNamedParams("findQuarterById",map);
+		    out.close();*/

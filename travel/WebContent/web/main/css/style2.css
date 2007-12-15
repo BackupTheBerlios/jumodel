@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	margin-top: 20px;
+}
+
+div {
+	margin: 0;
+	padding: 0;
+	border-width: 0;
+}
+
+.kolumna {
+
+}
+
+#gora {
+	width:775px;
+	background: white;
+	margin: 0 auto;
+}
+
+#gora #gornyPasek {
+	height: 8px;
+	overflow: hidden;
+	background: silver;
+}
+
+#gora #szybkieIkony {
+	height: 40px;
+	background: #be1f1c;
+	border-bottom: 1px solid white;
+
+	/*background-image: url("../images/red_gradient.png");
+	background-repeat: repeat-x;*/
+}
+
+#header {
+	background: silver;
+}
+#header	#logo {
+	background: url("../images/logo.jpg") no-repeat;
+	margin: 0px auto;
+	height: 180px;
+	width: 775px;
+}
+
+#content {
+	border: 1px solid red;
+	overflow: hidden;
+}
+
+
+#gornaWartwa {
+
+}
+
+#gornaWartwa #menuAndCostam {
+
+}
+
+#gornaWartwa #news {
+
+}
+
+#gornaWartwa #last {
+
+}
+
+#dolnaWarstwa {
+}
+
+
+#dolnaWarstwa #giftCards {
+
+}
+
+#dolnaWarstwa #mapPlace {
+}
+
+#dolnaWarstwa #friends {
+
+}
+
+
+
+
+/* ---------glupoty ------- */
+.lewy {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+	width: 300px;
+	height: 200px;
+	float: left;
+}
+
+.prawy {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid brown;
+	width: 300px;
+	height: 200px;
+	float: left;
+}

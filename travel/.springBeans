@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+		<config>WebContent/WEB-INF/applicationContext-jsf.xml</config>
+		<config>WebContent/WEB-INF/applicationContext.xml</config>
+		<config>WebContent/WEB-INF/applicationContext-data.xml</config>
+		<config>WebContent/WEB-INF/applicationContext-services.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[travel]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>WebContent/WEB-INF/applicationContext.xml</config>
+				<config>WebContent/WEB-INF/applicationContext-data.xml</config>
+				<config>WebContent/WEB-INF/applicationContext-jsf.xml</config>
+				<config>WebContent/WEB-INF/applicationContext-services.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

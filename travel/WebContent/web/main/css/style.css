@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+#fullsite {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+	background: silver;
+}
+
+#header {
+	height: 100px;
+	border: 1px solid brown;
+	background: yellow;
+}
+
+#menu {
+	/*height: 30px;*/
+	overflow:auto;
+	border: 1px solid brown;
+	background: lime;
+}
+
+#content {
+	width: 80%;
+	border: 1px solid black;
+	background: olive;
+	float: left;
+	padding: 5px;
+}
+
+#info {
+	border: 1px solid black;
+	background: olive;
+	float:none;
+}
+
+#foot {
+	clear:both;
+	height: 100px;
+	border: 1px solid black;
+	background: #999;
+	margin-top: 30px;
+}
+
+#menu ul {
+	margin-top: 0px;
+	margin-left: 20px;
+	list-style: none;
+}
+
+#menu li {
+	float:left;
+	border:1px dotted black;
+	margin-left: 10px;
+	background: aqua;
+	letter-spacing: 3px;
+	padding: 0px;
+}
+
+#menu li a {
+	display: block;
+	padding:5px;
+}
+
+#menu li:HOVER {
+	background: white;
+}

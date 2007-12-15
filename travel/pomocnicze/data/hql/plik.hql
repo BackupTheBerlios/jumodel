@@ -1,0 +1,1 @@
+from Quarter q where q.luxury=commons.enums.QuarterLuxury.GOOD

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<head>
+<title>fdsfads</title>
+</head>
+<body>
+<a4j:region>
+
+<a4j:form>
+	<a4j:poll interval="1" reRender="typingText" action="#{bean.typingTextAction}" enabled="#{bean.pollTest}"/>
+</a4j:form>
+	<h:form>
+		<h:inputTextarea value="#{bean.tekst}" valueChangeListener="#{bean.onWritingCharInTextArea}">
+			<a4j:support reRender="area2" event="onkeyup"></a4j:support>
+		</h:inputTextarea>
+		
+	</h:form>
+	
+	<h:form>
+		<h:inputTextarea id="area2" value="#{bean.tekst}"></h:inputTextarea>
+	</h:form>
+	<div class="prawy">prawy <br />
+				<a4j:outputPanel ajaxRendered="true">
+					<h:outputText value="#{bean.tekst}">
+
+					</h:outputText>
+					<div>
+					<h:outputText value="#{bean.longTekst}" id="typingText"></h:outputText>
+					</div>
+				</a4j:outputPanel></div>
+</a4j:region>
+</body>
+</html>

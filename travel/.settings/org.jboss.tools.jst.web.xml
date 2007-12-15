@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FILESYSTEMS APPLICATION_NAME="testjsf" ENTITY="FileSystems"
+ VERSION="2.0.0" WORKSPACE_HOME="./WebContent/WEB-INF">
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%workspace.home%" NAME="WEB-INF"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" INFO="Content-Type=Web"
+  LOCATION="%workspace.home%/.." NAME="WEB-ROOT"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%workspace.home%/../../src" NAME="src"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%workspace.home%/lib" NAME="lib"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%workspace.home%/classes" NAME="classes"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%eclipse.project%" NAME="testjsf"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%workspace.home%/lib/richfaces-api-3.1.0.jar" NAME="lib-richfaces-api-3.1.0.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%workspace.home%/lib/richfaces-impl-3.1.0.jar" NAME="lib-richfaces-impl-3.1.0.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%workspace.home%/lib/richfaces-ui-3.1.0.jar" NAME="lib-richfaces-ui-3.1.0.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%workspace.home%/lib/mysql-connector-java-5.0.4-bin.jar" NAME="lib-mysql-connector-java-5.0.4-bin.jar"/>
+ <WEB ENTITY="JstWeb" MODEL_PATH="/web.xml" SERVLET_VERSION="2.4">
+  <MODULE ENTITY="WebJSFModule" MODEL_PATH="/faces-config.xml"
+   ROOT="WEB-ROOT" SRC="src" URI="/WEB-INF/faces-config.xml"/>
+ </WEB>
+</FILESYSTEMS>

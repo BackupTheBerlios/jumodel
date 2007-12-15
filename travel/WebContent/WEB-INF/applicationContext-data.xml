@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/TravelDB" resource-ref="true"/>
+	
+
+	<!--
+		*	FACTORIES 
+		*		OF SESSIONS FOR:
+		*		HIBERNATE, JPA and iBATIS 
+		* -->
+	
+		<!-- HIBERNATE -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>travel.data.entities.jpa.Category</value>
+				<value>travel.data.entities.jpa.Complaint</value>
+				<value>travel.data.entities.jpa.Expedition</value>
+				<value>travel.data.entities.jpa.Offer</value>
+				<value>travel.data.entities.jpa.OfferPromotion</value>
+				<value>travel.data.entities.jpa.Promotion</value>
+				<value>travel.data.entities.jpa.Quarter</value>
+				<value>travel.data.entities.jpa.Remark</value>
+				<value>travel.data.entities.jpa.Reservation</value>
+				<value>travel.data.entities.jpa.Transport</value>
+				<value>travel.data.entities.jpa.Travel</value>
+				<value>travel.data.entities.jpa.User</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+			</props>
+		</property>
+	</bean>
+		<!-- /END OF HIBERNATE -->
+		
+		<!-- JPA -->
+		<!-- mam zbyt słaby komp by chodziły na nim rownolegle hibernate i jpa
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true"/>
+				<property name="generateDdl" value="false"/>
+				<property name="database" value="MYSQL"/>
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLInnoDBDialect"></property>
+			</bean>
+		</property>
+	</bean>
+	 -->
+		<!-- /END OF JPA -->
+			
+		<!-- IBATIS -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/WEB-INF/sql-map-config.xml" />
+	</bean>
+		<!-- /END OF IBATIS -->
+	
+	
+		<!-- 
+		*	/END OF FACTORIES 
+	-->
+	
+	
+	
+
+	<!--*	
+		*	DATA MANAGERS
+		* -->
+	<bean id="commonManager" class="travel.data.managers.common.CommonManager" abstract="true">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<!-- <property name="entityManagerFactory" ref="entityManagerFactory"/>  -->
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+
+	<bean id="userDataManager" class="travel.data.managers.impl.UserDataManagerImpl" parent="commonManager"/>
+	<bean id="expeditionDataManager" class="travel.data.managers.impl.ExpeditionDataManagerImpl" parent="commonManager"/>
+	
+	<bean id="externalDataManager" class="travel.data.managers.impl.ExternalDataManagerImpl" parent="commonManager"/>	
+			
+	<!-- /DATA MANAGERS -->
+		
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+</beans>
