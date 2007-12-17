@@ -4,32 +4,6 @@
 
 <sqlMap> 
 
-<!-- 
-<resultMap id="rantResult" class="com.roadrantz.domain.Rant">
-	<result property="id" column="id" />
-	<result property="rantText" column="rant_text" />
-	<result property="postedDate" column="posted_date" />
-	<result property="vehicle" column="vehicle_id" select="getVehicleById" />
-</resultMap>
-
-
-<select id="getRantsForDay" resultMap="rantResult" parameterClass="int">
-<![CDATA[
-select id, posted_date, rant_text, vehicle_id
-from rant
-Listing 5.11 An example of mapping SQL queries to Rant objects
-Defines
-result
-mapping
-Declares
-getRantsForDay
-query
-206 CHAPTER 5
-Hitting the database
-where posted_date = #VALUE#
-]]>
-</select>
--->
 
 <select id="getKwatery" resultClass="travel.data.entities.jpa.Quarter" >
 	select 
