@@ -5,7 +5,7 @@
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:t="http://myfaces.apache.org/tomahawk"
 		xmlns:a4j="http://richfaces.org/a4j"
-      	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+      	xmlns:rich="http://richfaces.org/rich"
       	xmlns:c="http://java.sun.com/jstl/core"
       	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
@@ -15,9 +15,10 @@
 <body>
 	<ui:composition template="/web/main/layouts/mainLayout.xhtml"> 
     	<ui:define name="content">
+    	<a4j:form ajaxSubmit="true">
+    		<ui:include src="/web/main/menu.xhtml" />
+        </a4j:form>
     		#{appCtx.baseUrl}<br/>
-    		#{appCtx.baseUrl2}<br/>
-    		#{appCtx.baseUrl3}<br/>
     		
     		wyswietlamy Kwatery:
     		<h:dataTable value="#{quarterMain.fullList}" var="quarter">
@@ -30,9 +31,10 @@
     		
     		<a4j:form ajaxSubmit="true">
 
-            <rich:datascroller align="left"  for="carList" maxPages="7" />
-            <rich:spacer height="30" />
-            <rich:dataTable width="483" id="carList" rows="2" columnClasses="col"
+<div>
+            <rich:datascroller  for="carList" maxPages="7" align="left"/>
+            <rich:spacer height="30"/>
+            <rich:dataTable width="483" id="carList" rows="3" columnClasses="col"
                 value="#{quarterMain.fullList}" var="quarter">
                 <f:facet name="header">
                     <rich:columnGroup>
@@ -50,7 +52,6 @@
                         </h:column>
                     </rich:columnGroup>
                 </f:facet>
-
                 <h:column>
                     <h:outputText value="#{quarter.id}" />
                 </h:column>
@@ -63,10 +64,13 @@
                 <h:column>
                     <h:outputText value="#{quarter.name}" />
                 </h:column>
-
             </rich:dataTable>
+    </div> 
 
         </a4j:form>
+        
+        
+    
     	</ui:define>
 	</ui:composition>
 </body>      	

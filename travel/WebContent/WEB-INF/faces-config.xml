@@ -13,7 +13,6 @@
 			<value>#{externalFacade}</value>
 		</managed-property>
 	</managed-bean>
-	
 	<managed-bean>
 		<managed-bean-name>appCtx</managed-bean-name>
 		<managed-bean-class>
@@ -31,13 +30,37 @@
 			<value>web/main/css</value>
 		</managed-property>
 	</managed-bean>
-	
+	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>travel.jsf.mBeans.User</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>logged</property-name>
+			<property-class>boolean</property-class>
+			<value>false</value>
+		</managed-property>
+		<managed-property>
+			<property-name>role</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>UNKNOWN</value>
+		</managed-property>
+				
+	</managed-bean>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>HOME</from-outcome>
+			<to-view-id>/web/main/home.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 		<locale-config>
 			<default-locale>pl</default-locale>
 			<supported-locale>pl</supported-locale>
 		</locale-config>
-		 <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
+		<variable-resolver>
+			org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
 	</application>
 </faces-config>

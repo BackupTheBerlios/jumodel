@@ -22,6 +22,7 @@ public class ExternalFacadeImpl implements ExternalFacade {
 
 	@Override
 	public List<Quarter> getQuarterList() {
+		
 		System.out.println("fdsfs");
 		List<Quarter> result=dataManager.getQuarters();
 		System.out.println(result.get(0).getOffers());

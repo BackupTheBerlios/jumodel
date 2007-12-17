@@ -1,0 +1,38 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+      	xmlns:sql="http://java.sun.com/jsp/jstl/sql"> 
+
+	<rich:toolBar>
+    	<rich:toolBarGroup>
+    		Travel Office <a4j:commandLink value="^" action="#{appCtx.go2Home}"></a4j:commandLink>
+    	</rich:toolBarGroup>
+    	<rich:toolBarGroup>
+        	<rich:dropDownMenu value="Logowanie">
+	        	<rich:menuGroup value="Zaloguj" rendered="#{!user.logged}">
+	        		<rich:menuItem value="Zaloguj"></rich:menuItem>
+	        		<rich:menuSeparator/>
+	        		<rich:menuItem value="Zapomniałem hasła"></rich:menuItem>
+	        		<rich:menuItem value="Zarejestruj się"></rich:menuItem>
+	        	</rich:menuGroup>
+	        	<rich:menuItem value="Wyloguj" rendered="#{user.logged}"></rich:menuItem>       
+	        </rich:dropDownMenu>
+	        <rich:dropDownMenu value="Oferty">
+	        	<rich:menuItem value="Przeglądaj wybrane oferty"></rich:menuItem>
+	        	<rich:menuItem value="Wyszukaj ofertę"></rich:menuItem>
+	        </rich:dropDownMenu>
+	        <rich:dropDownMenu value="Moje konto" rendered="true">
+	        	<rich:menuItem value="Pokaż moje rezerwacje"></rich:menuItem>
+	        	<rich:menuItem value="Mój Profil"></rich:menuItem>
+	        </rich:dropDownMenu>
+	        
+        </rich:toolBarGroup>
+     </rich:toolBar> 	
+</ui:component>

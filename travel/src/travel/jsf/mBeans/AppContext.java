@@ -17,6 +17,11 @@ public class AppContext {
 		}
 		return baseUrl;
 	}
+	
+	public String go2Home() {
+		return "HOME";
+	}
+	
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
 	}

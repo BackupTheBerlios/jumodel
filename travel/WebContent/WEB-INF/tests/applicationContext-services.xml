@@ -15,17 +15,15 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-	
-	
-	<!-- 
-	 <context:spring-configured/>
-     <context:load-time-weaver aspectj-weaving="on"/>  
-     -->
-	
-	<context:annotation-config />
-    <context:component-scan base-package="travel"/>
 
-	<bean id="bean" class="travel.test.MyBean">
-		<property name="name"><value>Rafik</value></property>
+	<!--*
+	 	*	FACADES
+	 	*-->
+	<bean id="userFacade" class="travel.business.facades.impl.UserFacadeImpl">
+		<property name="dataManager" ref="userDataManager"/>
 	</bean>
+	<bean id="externalFacade" class="travel.business.facades.impl.ExternalFacadeImpl">
+		<property name="dataManager" ref="externalDataManager"/>
+	</bean>
+	
 </beans>
