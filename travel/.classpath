@@ -119,13 +119,15 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="/libraries/lib/myfaces-api-1.1.5.jar">
+	<classpathentry exported="true" kind="lib" path="/libraries/lib/myfaces-api-1.1.5.jar" sourcepath="/libraries/lib/myfaces_src">
 		<attributes>
+			<attribute name="javadoc_location" value="file:/D:/programowanie/java/lib/my faces/javadoc/api/"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="/libraries/lib/myfaces-impl-1.1.5.jar">
+	<classpathentry exported="true" kind="lib" path="/libraries/lib/myfaces-impl-1.1.5.jar" sourcepath="/libraries/lib/myfaces_src">
 		<attributes>
+			<attribute name="javadoc_location" value="file:/D:/programowanie/java/lib/my faces/javadoc/impl/"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
@@ -195,5 +197,20 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/libraries/lib/junit-4.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/libraries/lib/facestrace-0.8.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="/libraries/lib/commons-validator.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="/libraries/lib/jakarta-oro-2.0.8.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
