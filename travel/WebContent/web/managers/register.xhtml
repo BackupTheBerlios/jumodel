@@ -1,0 +1,141 @@
+<ui:composition template="#{appCtx.mainRes}/layouts/mainLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+    xmlns:ft="http://sourceforge.net/projects/facestrace">
+      	
+     
+    <ui:define name="content">
+    	<h1>Formatka rejestracji.</h1>
+    	
+    	<h:form id="registerForm">
+    	<rich:messages style="color:red" showDetail="true" globalOnly="false" ></rich:messages>
+    	<rich:simpleTogglePanel label="Dane podstawowe" switchType="client" width="500px" id="Dane_podstawowe">
+    	<ui:remove>
+    		<rich:effect event="onclick"  type="Highlight" params="duration:0.8" />
+    	</ui:remove>
+    		<t:panelGrid columns="4" styleClass="PanelGrid" headerClass="Center"> 		
+    			<f:facet name="header" >
+    				
+    			</f:facet>    	 		
+       	 		
+	    		<h:outputLabel value="Imie *" for="Imie"/>
+	    		<h:inputText value="#{reg.dbUser.name}" styleClass="InputText" required="true" id="Imie"></h:inputText>
+	    		<h:outputLabel value="Nazwisko *" for="Nazwisko"/>
+	    		<h:inputText value="#{reg.dbUser.surname}" styleClass="InputText" required="true" id="Nazwisko"></h:inputText>
+	    		<t:panelGroup colspan="2"> <rich:message for="Imie"/> 	</t:panelGroup>
+	    		<t:panelGroup colspan="2"> <rich:message for="Nazwisko"/></t:panelGroup>
+	 
+	    		
+	    		<h:outputLabel value="Pesel" for="Pesel"/>
+	    		<h:inputText value="#{reg.dbUser.pesel}" styleClass="InputText" required="true" id="Pesel"></h:inputText>
+    			<h:outputLabel value="Nip" for="Nip"/>
+    			<h:inputText value="#{reg.dbUser.nip}" styleClass="InputText" id="Nip"></h:inputText>
+    			
+    			<t:panelGroup colspan="2"> 
+    				<rich:message for="Pesel"/>
+    			</t:panelGroup>
+	    		<t:panelGroup colspan="2">
+	    			<rich:message for="Nip"/> 	
+	    		</t:panelGroup>
+    			
+    			<h:outputLabel value="Data urodzenia" for="Data_urodzenia"/> 
+    			<rich:calendar value="#{reg.dbUser.dateOfBirth}" id="Data_urodzenia" styleClass="InputText"/> 			
+	    		<h:outputLabel value="Typ użytkownika" for="userType"></h:outputLabel>
+	    		<h:selectOneMenu value="#{reg.chosenType}" id="userType">
+	    			<f:selectItems value="#{reg.types}"/>
+	    			<f:converter converterId="enumConverter"/>
+	    		</h:selectOneMenu>
+	    		
+	    		<t:panelGroup colspan="4">
+	    			<rich:message for="Data_urodzenia"></rich:message>
+	    		</t:panelGroup>
+	    	
+
+    			<h:outputLabel value="Uwagi" for="Uwagi"/>
+    			<h:inputTextarea value="#{reg.dbUser.description}" id="Uwagi" rows="6"></h:inputTextarea>
+    			<h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
+    			<f:facet name="footer">
+    				<h:commandButton value="Następny" styleClass="Button" onclick="SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_podstawowe');SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_logowania');return false;"></h:commandButton>
+    			</f:facet>
+    		</t:panelGrid>	
+    		<rich:spacer height="50px"></rich:spacer>
+    	</rich:simpleTogglePanel>
+    	
+    	<rich:spacer height="0px"></rich:spacer>
+    	
+    	<rich:simpleTogglePanel label="Dane logowania" switchType="client" width="500px" opened="close" id="Dane_logowania">
+    		<t:panelGrid columns="2"> 		
+	    		<h:outputLabel value="Login *" for="login"/>
+	    		<h:inputText value="#{reg.dbUser.login}" required="true" id="login" styleClass="InputText"></h:inputText>
+	    		
+	    		<t:panelGroup colspan="2">
+	    			<rich:message for="login" ></rich:message> 
+	    		</t:panelGroup>
+	    		
+	    		<h:outputLabel value="Hasło *" for="password"/> 
+	    		<h:inputSecret value="#{reg.dbUser.password}"  required="true" id="password" styleClass="InputText"></h:inputSecret>
+	    		
+	    		<h:outputLabel value="Powtórz hasło *" for="repeatPassword"/> 
+	    		<h:inputSecret value="#{reg.repeatPassword}" required="true" id="repeatPassword" styleClass="InputText"></h:inputSecret>
+	    		
+	    		<t:panelGroup colspan="2">
+	    			<rich:message for="repeatPassword" ></rich:message> 
+	    		</t:panelGroup>
+	    		
+	    		<f:facet name="footer">
+	    			<h:panelGroup>
+	    				<h:commandButton value="Poprzedni" styleClass="Button" onclick="SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_podstawowe');SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_logowania');return false;"></h:commandButton>    				
+	    				<rich:spacer width="10px" height="0px"></rich:spacer>
+	    				<h:commandButton value="Następny" styleClass="Button" onclick="SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_kontaktowe');SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_logowania');return false;"></h:commandButton>
+	    			</h:panelGroup>
+    			</f:facet>
+    		</t:panelGrid>	
+    	</rich:simpleTogglePanel>
+    	
+    	<rich:spacer height="0px"></rich:spacer>
+    	 
+    	<rich:simpleTogglePanel label="Dane adresowe" switchType="client" width="500px" opened="close" id="Dane_kontaktowe">
+    		<t:panelGrid columns="4"> 		
+	    		<h:outputLabel value="Ulica" for="street"/>			
+	    		<h:inputText value="#{reg.dbUser.street}" id="street"></h:inputText>
+	    		<h:outputLabel value="Nr domu" for="homeNo"/>		
+	    		<h:inputText value="#{reg.dbUser.nr}" id="homeNo"></h:inputText>
+	    		
+	    		<h:outputLabel value="Kod pocztowy" for="postCode"/>
+	    		<h:inputText value="#{reg.dbUser.postCode}" id="postCode"></h:inputText>
+	    		<h:outputLabel value="Nr telefonu" for="phoneNumber"/>
+	    		<h:inputText value="#{reg.dbUser.phoneNumber}" id="phoneNumber"></h:inputText>
+	    		
+	    		<h:outputLabel value="E-mail *" for="email"/>
+	    		<h:inputText value="#{reg.dbUser.email}" id="email" required="true">
+	    			<t:validateEmail></t:validateEmail>
+	    		</h:inputText>
+	    		<h:panelGroup></h:panelGroup>
+	    		<h:panelGroup></h:panelGroup>
+	    		
+	    		<t:panelGroup colspan="2"> 
+	    			<rich:message for="email"></rich:message>
+	    		</t:panelGroup>
+	    		<h:panelGroup></h:panelGroup>
+	    		<h:panelGroup></h:panelGroup>
+	    		
+	    		<f:facet name="footer">
+		    		<h:panelGroup>    				
+	    				<h:commandButton value="Poprzedni" styleClass="Button" onclick="SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_kontaktowe');SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_logowania');return false;"></h:commandButton>
+		    			<rich:spacer width="10px" height="0px"></rich:spacer>
+		    			<h:commandButton action="#{reg.register}" value="Zarejestruj" styleClass="Button"></h:commandButton>
+		    		</h:panelGroup>
+	    		</f:facet>
+    		</t:panelGrid>	
+    	</rich:simpleTogglePanel>    
+    			
+    	</h:form>
+    </ui:define>
+</ui:composition>

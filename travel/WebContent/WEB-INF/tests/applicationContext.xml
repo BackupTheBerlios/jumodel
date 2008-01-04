@@ -25,7 +25,4 @@
 	<context:annotation-config />
     <context:component-scan base-package="travel"/>
 
-	<bean id="bean" class="travel.test.MyBean">
-		<property name="name"><value>Rafik</value></property>
-	</bean>
 </beans>

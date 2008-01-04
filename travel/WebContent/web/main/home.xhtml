@@ -1,79 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html 	xmlns="http://www.w3.org/1999/xhtml"
-	  	xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:t="http://myfaces.apache.org/tomahawk"
-		xmlns:a4j="http://richfaces.org/a4j"
-      	xmlns:rich="http://richfaces.org/rich"
-      	xmlns:c="http://java.sun.com/jstl/core"
-      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-      	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
-      	xmlns:sql="http://java.sun.com/jsp/jstl/sql">
-
-<head></head>
-<body>
-	<ui:composition template="/web/main/layouts/mainLayout.xhtml"> 
-    	<ui:define name="content">
-    	<a4j:form ajaxSubmit="true">
-    		<ui:include src="/web/main/menu.xhtml" />
-        </a4j:form>
-    		#{appCtx.baseUrl}<br/>
-    		
-    		wyswietlamy Kwatery:
-    		<h:dataTable value="#{quarterMain.fullList}" var="quarter">
-    			<h:column>#{quarter.id}</h:column>
-    			<h:column>#{quarter.name}</h:column>
-    			<h:column>#{quarter.address}</h:column>
-    		</h:dataTable>
-    		
-
-    		
-    		<a4j:form ajaxSubmit="true">
-
-<div>
-            <rich:datascroller  for="carList" maxPages="7" align="left"/>
-            <rich:spacer height="30"/>
-            <rich:dataTable width="483" id="carList" rows="3" columnClasses="col"
-                value="#{quarterMain.fullList}" var="quarter">
-                <f:facet name="header">
-                    <rich:columnGroup>
-                        <h:column>
-                            <h:outputText styleClass="headerText" value="Make" />
-                        </h:column>
-                        <h:column>
-                            <h:outputText styleClass="headerText" value="Model" />
-                        </h:column>
-                        <h:column>
-                            <h:outputText styleClass="headerText" value="Price" />
-                        </h:column>
-                        <h:column>
-                            <h:outputText styleClass="headerText" value="Mileage" />
-                        </h:column>
-                    </rich:columnGroup>
-                </f:facet>
-                <h:column>
-                    <h:outputText value="#{quarter.id}" />
-                </h:column>
-                <h:column>
-                    <h:outputText value="#{quarter.name}" />
-                </h:column>
-                <h:column>
-                    <h:outputText value="#{quarter.address}" />
-                </h:column>
-                <h:column>
-                    <h:outputText value="#{quarter.name}" />
-                </h:column>
-            </rich:dataTable>
-    </div> 
-
-        </a4j:form>
-        
-        
+<ui:composition template="#{appCtx.mainRes}/layouts/mainLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:ft="http://sourceforge.net/projects/facestrace">
+  
+    <ui:define name="content">
+ 		Witamy na stronie głównej.
+ 		
+    </ui:define>
     
-    	</ui:define>
-	</ui:composition>
-</body>      	
-
-      
-</html>
+</ui:composition>

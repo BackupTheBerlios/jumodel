@@ -1,16 +1,15 @@
 package travel.tests.unit.external;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 
 import travel.business.facades.ExternalFacade;
-import travel.test.MyBean;
-import travel.tests.TestSpring;
+import travel.tests.TestSpringCtx;
 
 public class ExternalMainTest {
-	private ApplicationContext ctx=TestSpring.getCtx();
+	private ApplicationContext ctx=TestSpringCtx.getCtx();
 	
 	@Test
 	public void amountOfQuarters() {
@@ -21,7 +20,6 @@ public class ExternalMainTest {
 	
 	@Test
 	public void krotkiTest() {
-		MyBean bean= (MyBean) ctx.getBean("bean");
-		assertEquals("Dupa tam", bean.getName(), "Rafik");
+	
 	}
 }

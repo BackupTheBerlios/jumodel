@@ -6,7 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import travel.business.facades.ExternalFacade;
 import travel.data.entities.jpa.Quarter;
+import travel.data.entities.jpa.Transport;
 import travel.data.managers.ExternalDataManager;
+import travel.jsf.mBeans.bBeans.external.transport.Criteria;
 
 @Transactional
 public class ExternalFacadeImpl implements ExternalFacade {
@@ -27,5 +29,15 @@ public class ExternalFacadeImpl implements ExternalFacade {
 		List<Quarter> result=dataManager.getQuarters();
 		System.out.println(result.get(0).getOffers());
 		return result;
+	}
+
+	@Override
+	public List<Transport> findTransportsByCriteria(Criteria criteria) {
+		return dataManager.findTransportsByCriteria(criteria);
+	}
+
+	@Override
+	public void removeTransportById(Integer chosenId) {
+		dataManager.removeTransportById(chosenId);
 	}
 }

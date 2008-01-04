@@ -1,0 +1,30 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+
+	<h:form id="criteriaForm">
+	<rich:simpleTogglePanel switchType="client" label="Kryteria wyboru:" >
+		<h:panelGrid columns="8">
+			<h:outputLabel value="Typ transportu" for="transportType"></h:outputLabel>
+			<h:selectOneMenu value="#{transm.criteria.chosenType}" id="transportType">
+				<f:selectItems value="#{transm.criteria.types}"/>
+				<f:converter converterId="enumConverter" />
+			</h:selectOneMenu>
+			<h:outputLabel value="Firma" for="company"></h:outputLabel>
+			<h:inputText value="#{transm.criteria.company}" id="company" ></h:inputText>
+			<h:outputLabel value="Liczba miejsc" for="amountPlaces"></h:outputLabel>
+			<h:inputText value="#{transm.criteria.amountPlaces}" id="amountPlaces"></h:inputText>
+			
+			<a4j:commandButton value="Pokaż" id="Pokaz" type="submit" actionListener="#{transm.fillTable}" styleClass="Button" reRender="filteredTransportList, dataScroller"></a4j:commandButton>
+			<ui:include src="/web/main/common/ajaxLoading.xhtml">
+			</ui:include>
+		</h:panelGrid>
+    </rich:simpleTogglePanel>
+    </h:form>   
+</ui:component>

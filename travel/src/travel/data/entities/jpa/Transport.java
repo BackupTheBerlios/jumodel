@@ -23,7 +23,7 @@ public class Transport implements Serializable {
 	@Column(name="TransportID")
 	private Integer id;
 
-	private int AmountOfPlaces;
+	private Integer amountOfPlaces;
 
 	private String description;
 
@@ -49,12 +49,12 @@ public class Transport implements Serializable {
 		this.id = id;
 	}
 
-	public int getAmountOfPlaces() {
-		return AmountOfPlaces;
+	public Integer getAmountOfPlaces() {
+		return amountOfPlaces;
 	}
 
-	public void setAmountOfPlaces(int amountOfPlaces) {
-		AmountOfPlaces = amountOfPlaces;
+	public void setAmountOfPlaces(Integer amountOfPlaces) {
+		this.amountOfPlaces = amountOfPlaces;
 	}
 
 	public String getDescription() {

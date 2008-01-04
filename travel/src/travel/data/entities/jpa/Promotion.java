@@ -20,7 +20,7 @@ public class Promotion implements Serializable {
 
 	private String name;
 
-	private short percentValue;
+	private Short percentValue;
 
 	private String description;
 
@@ -49,11 +49,11 @@ public class Promotion implements Serializable {
 		this.name = name;
 	}
 
-	public short getPercentValue() {
+	public Short getPercentValue() {
 		return percentValue;
 	}
 
-	public void setPercentValue(short percentValue) {
+	public void setPercentValue(Short percentValue) {
 		this.percentValue = percentValue;
 	}
 

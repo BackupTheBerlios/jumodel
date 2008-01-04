@@ -1,34 +1,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html 	xmlns="http://www.w3.org/1999/xhtml"
-	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:h="http://java.sun.com/jsf/html"
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:t="http://myfaces.apache.org/tomahawk"
 		xmlns:a4j="http://richfaces.org/a4j"
-      	xmlns:richfaces="http://richfaces.ajax4jsf.org/rich"
-      	xmlns:c="http://java.sun.com/jstl/core"
-      	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
-      	xmlns:sql="http://java.sun.com/jsp/jstl/sql">
+	    xmlns:rich="http://richfaces.org/rich"
+	    xmlns:c="http://java.sun.com/jstl/core"
+	    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	    xmlns:ft="http://sourceforge.net/projects/facestrace">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Hello World</title>
 	<base href="#{appCtx.baseUrl}"/>
 	<link rel="Stylesheet" type="text/css" href="#{appCtx.cssRes}/style2.css"/>
+	<script src="/travel#{appCtx.mainRes}/js/travel.js"></script>
+	<f:loadBundle basename="travel.jsf.messages.messages" var="msgs"/>
+	
+
 </head>
-<body>
+<body class="Body">
+<a4j:region>
 	<div id="gora">
-		<div id="gornyPasek">nic</div>
+		<div id="gornyPasek">#{msgs.tytul}</div>
 		<div id="szybkieIkony"></div>
 	</div>
 	<div id="header">
 		<div id="logo"></div>
 	</div>
 	<div id="content">
-		<ui:insert name="content">
-		fdsa<img src="#{appCtx.imgRes}/logo.jpg"/>
 			<div id="gornaWartwa">
-				<div id="menuAndCostam"></div>
+				<div id="menuAndCostam">
+				<ui:insert name="menu">
+					<ui:include src="#{appCtx.mainRes}/menu.xhtml" />
+					<ui:include src="#{appCtx.mainRes}/logowanie.xhtml" />
+				</ui:insert>
+				</div>
+				<div id="mainContent">
+				<ui:insert name="content">
+				</ui:insert>
+				</div>
 				<div id="news"></div>
 				<div id="last"></div>
 			</div>
@@ -37,8 +49,10 @@
 				<div id="mapPlace"></div>
 				<div id="friends"></div>
 			</div>
-		</ui:insert>
 	</div>
-	<div id="foot"></div>			
+	<div id="foot">
+		<ft:trace rendered="#{appCtx.debug}"/>
+	</div>
+</a4j:region>			
 </body>      	
 </html>

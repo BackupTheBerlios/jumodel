@@ -1,0 +1,19 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+
+	<c:if test="${empty startText}">
+		<ui:param name="startText" value="Proszę czekać..." />
+	</c:if>
+	<a4j:status forceId="defaultStatus" startText="#{startText}">
+		<f:facet name="start">
+			<h:graphicImage value="#{appCtx.imgRes}/ajax_progress8.gif" />
+		</f:facet>
+	</a4j:status>
+</ui:component>

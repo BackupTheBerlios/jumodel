@@ -48,8 +48,8 @@ div {
 }
 
 #content {
-	border: 1px solid red;
-	overflow: hidden;
+	/*border: 1px solid red;*/
+	overflow: visible;
 }
 
 
@@ -86,6 +86,177 @@ div {
 
 
 
+.Body{
+	background-color:#DFE5EE;
+	font-weight:normal;
+	border-style:none;
+	font-family: Verdana,sans-serif,Arial;
+	margin:0px;
+	width:100%;
+}
+
+.Center {
+	margin: auto auto;	
+}
+
+.Grid{
+	width: 80%;
+	padding-left:30px;
+	padding-top:20px;
+	margin-left: 30px;
+	margin-top: 20px;
+}
+
+
+.Font_small{
+font-weight:normal;
+font-size: 12px;
+}
+
+.Font_smallBold{
+font-weight:bold;
+font-size: 12px;
+}
+
+
+.Button{
+	background-image:url(../images/btn.gif);
+	background-repeat: repeat-x;
+	background-position: center;
+	font-size: 12px;
+	width: 120px;
+	height:22px;
+	border:none;
+	font-family: Verdana, Sans, Arial;
+	color: white;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.Button:active{
+	background-image:url(../images/btn_down.gif);
+}
+
+.Button:hover{
+	background-image:url(../images/btn_over.gif);
+}
+
+
+.ButtonOk{
+	background-image:url(../images/btn_ok.gif);
+	background-repeat: repeat-x;
+	background-position: center;
+	font-weight: bold;
+	font-size: 12px;
+	width: 150px;
+	height:22px;
+	border: 0px;
+}
+
+.ButtonOk:active{
+	background-image:url(../images/btn_ok_down.gif);
+}
+
+.ButtonOk:hover{
+	background-image:url(../images/btn_ok_over.gif);
+}
+
+
+.CenterTop20px{
+	text-align: center;
+	padding-top: 20px;
+}
+
+.InputText{
+	border: 1px solid #8FACE6;
+	background-color: white;
+}
+
+.InputText:active{
+	border: 1px solid #6992DE;
+	background-color: orange;
+	vertical-align: middle;
+}
+
+.InputText:FOCUS {
+	background-color: #FFFFAF;
+}
+.UserInfo{
+	padding-bottom: 15px;
+	margin-bottom:15px;
+	padding-top:15px;
+	margin-top:15px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.UserInfo2{
+	padding-top: 40px;
+	padding-bottom: 15px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.UserInfo3{
+	padding-bottom: 10px;
+	margin-bottom:10px;
+	padding-top:10px;
+	margin-top:10px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.CellMiddle{
+	text-align:center;
+}
+
+.CellLeft{
+	text-align:left;
+
+}
+
+.CellRight{
+	text-align:right;
+}
+
+.CellCenter{
+	text-align:center;
+
+}
+
+.Img{
+	background-color:#DFE5EE;
+}
+
+.PanelGrid{
+	text-align:justify;
+	padding-top: 0px;;
+}
+
+.Table{
+	border: 1px solid;
+	border-color: black;
+}
+
+.Padding25{
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 25px;
+}
+
+.Image{
+	border: 0;
+	padding-left: 10px;
+	padding-right:10px;
+}
+
+.Vertical{
+	vertical-align: middle;
+}
+
+.Message{
+	color:red;
+}
 
 /* ---------glupoty ------- */
 .lewy {

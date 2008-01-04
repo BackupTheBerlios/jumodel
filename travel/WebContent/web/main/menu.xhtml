@@ -6,33 +6,40 @@
 		xmlns:a4j="http://richfaces.org/a4j"
       	xmlns:rich="http://richfaces.org/rich"
       	xmlns:c="http://java.sun.com/jstl/core"
-      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-      	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
-      	xmlns:sql="http://java.sun.com/jsp/jstl/sql"> 
-
-	<rich:toolBar>
-    	<rich:toolBarGroup>
-    		Travel Office <a4j:commandLink value="^" action="#{appCtx.go2Home}"></a4j:commandLink>
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+	<h:form>
+	<rich:toolBar id="mainToolbar" itemSeparator="grid">
+    	<rich:toolBarGroup style="color:#FCD003">
+    		Travel Office
+    		<h:commandLink action="#{appCtx.go2Home}">
+    			<h:graphicImage value="#{appCtx.imgRes}/home.gif" styleClass="Image"></h:graphicImage>
+    		</h:commandLink>
     	</rich:toolBarGroup>
     	<rich:toolBarGroup>
         	<rich:dropDownMenu value="Logowanie">
-	        	<rich:menuGroup value="Zaloguj" rendered="#{!user.logged}">
-	        		<rich:menuItem value="Zaloguj"></rich:menuItem>
-	        		<rich:menuSeparator/>
-	        		<rich:menuItem value="Zapomniałem hasła"></rich:menuItem>
-	        		<rich:menuItem value="Zarejestruj się"></rich:menuItem>
-	        	</rich:menuGroup>
-	        	<rich:menuItem value="Wyloguj" rendered="#{user.logged}"></rich:menuItem>       
+	        	<rich:menuItem value="Zaloguj" rendered="#{!user.logged}" submitMode="none" onclick="Richfaces.showModalPanel('logowanie',{width:450, top:200})"></rich:menuItem>
+	        	<rich:menuItem value="Zapomniałem hasła" rendered="#{!user.logged}"></rich:menuItem>
+	        	<rich:menuSeparator rendered="#{!user.logged}"/>
+	        	<rich:menuItem value="Zarejestruj się" rendered="#{!user.logged}" action="CLIENT_REGISTER"></rich:menuItem>
+	        	<rich:menuItem value="Zarejestruj pracownika" rendered="#{user.role == 'MANAGER'}" action="WORKER_REGISTER"></rich:menuItem>
+	        	
+	        	<rich:menuItem action="#{auth.logout}" value="Wyloguj" rendered="#{user.logged}"></rich:menuItem>       
 	        </rich:dropDownMenu>
 	        <rich:dropDownMenu value="Oferty">
 	        	<rich:menuItem value="Przeglądaj wybrane oferty"></rich:menuItem>
 	        	<rich:menuItem value="Wyszukaj ofertę"></rich:menuItem>
 	        </rich:dropDownMenu>
+	        <rich:dropDownMenu value="Dane zewnętrzne">
+	        	<rich:menuItem value="Zarządzanie środkami transportu" action="TRANSPORT_MANAGE"></rich:menuItem>
+	        	<rich:menuItem value="Wyszukaj ofertę"></rich:menuItem>
+	        </rich:dropDownMenu>
+	        
 	        <rich:dropDownMenu value="Moje konto" rendered="true">
 	        	<rich:menuItem value="Pokaż moje rezerwacje"></rich:menuItem>
 	        	<rich:menuItem value="Mój Profil"></rich:menuItem>
 	        </rich:dropDownMenu>
 	        
         </rich:toolBarGroup>
-     </rich:toolBar> 	
+     </rich:toolBar>
+     </h:form> 	
 </ui:component>

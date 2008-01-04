@@ -1,0 +1,58 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+      	xmlns:sql="http://java.sun.com/jsp/jstl/sql"> 
+
+        <rich:modalPanel id="logowanie" minHeight="175" minWidth="250"
+            height="220" width="300" zindex="2000" style="padding:0px">
+            <f:facet name="header">
+                <h:outputText value="Zaloguj się" />
+            </f:facet>
+            <f:facet name="controls">
+                <h:graphicImage value="/images/modal/close.png" style="cursor:pointer" onclick="Richfaces.hideModalPanel('logowanie')" />
+            </f:facet>
+			<a4j:form id="authForm">
+				<h:panelGrid columns="2" cellspacing="5px" styleClass="PanelGrid Center" style="padding-top:0px">
+					<f:facet name="header">
+						<t:div styleClass="Center" style="height:40px; overflow: auto;text-align:left;">
+							<rich:messages id="log_msgs" errorStyle="color:red"  tooltip="true" showDetail="true"></rich:messages>
+						</t:div>
+					</f:facet>
+					<b>Login:</b> <h:inputText id="login" value="#{auth.login}" required="true" styleClass="InputText"></h:inputText>
+					<b>Hasło:</b> <h:inputSecret id="password" value="#{auth.passwd}" required="true" styleClass="InputText"></h:inputSecret>
+					<h:panelGroup/><a4j:commandButton  action="#{auth.login}" value="Zaloguj" type="submit" styleClass="Button" reRender="mainToolbar, log_msgs" oncomplete="testPassAuth()"></a4j:commandButton>
+					<h:panelGroup/><h:commandButton id="btnAuthCancel" action="HOME" value="Anuluj" styleClass="Button" onclick="Richfaces.hideModalPanel('logowanie');return false"></h:commandButton>
+					
+				</h:panelGrid>
+	  
+  			</a4j:form>
+  			
+  				<script type="text/javascript">
+				   //<![CDATA[
+				   
+				  	function testLoggedJS(logged) {
+				  	var el=document.getElementById("authForm:btnAuthCancel"); 
+						//alert(logged+"nic"+el);
+						if (logged) {
+							el.click();
+						}
+					}
+				    //]]>
+				</script>
+  			
+  			<a4j:form>
+	  			<a4j:jsFunction  name="testPassAuth" data="#{user.logged}" limitToList="true"  oncomplete="testLoggedJS(data)">
+				</a4j:jsFunction>
+			</a4j:form>
+		
+        </rich:modalPanel>
+        
+        
+</ui:component>

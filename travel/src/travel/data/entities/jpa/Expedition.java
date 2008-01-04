@@ -22,13 +22,13 @@ public class Expedition implements Serializable {
 	@Column(name="ExpeditionID")
 	private Integer id;
 
-	private int amountOfPlaces;
+	private Integer amountOfPlaces;
 
 	private Date dateFrom;
 
 	private Date dateTo;
 
-	private int minPersons;
+	private Integer minPersons;
 
 	private Timestamp dateStop;
 
@@ -58,11 +58,11 @@ public class Expedition implements Serializable {
 		this.id = id;
 	}
 
-	public int getAmountOfPlaces() {
+	public Integer getAmountOfPlaces() {
 		return amountOfPlaces;
 	}
 
-	public void setAmountOfPlaces(int amountOfPlaces) {
+	public void setAmountOfPlaces(Integer amountOfPlaces) {
 		this.amountOfPlaces = amountOfPlaces;
 	}
 
@@ -82,11 +82,11 @@ public class Expedition implements Serializable {
 		this.dateTo = dateTo;
 	}
 
-	public int getMinPersons() {
+	public Integer getMinPersons() {
 		return minPersons;
 	}
 
-	public void setMinPersons(int minPersons) {
+	public void setMinPersons(Integer minPersons) {
 		this.minPersons = minPersons;
 	}
 

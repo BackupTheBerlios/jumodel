@@ -1,0 +1,78 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+
+		<h:form id="transportGridForm">
+	 	<rich:dataTable value="#{transm.filteredTransportsList}" var="row" id="filteredTransportList"
+	 	  	onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+			onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" 
+			width="100%" rows="5" onRowDblClick="editRow(this)" >
+			
+	 		<f:facet name="header">
+	 			<rich:columnGroup>
+	 				<rich:column>ID</rich:column>
+	 				<rich:column>Firma</rich:column>
+	 				<rich:column>Liczba miejsc</rich:column>
+	 				<rich:column>Typ transportu</rich:column>
+	 				<rich:column style="width:30px"> </rich:column>
+	 				<rich:column style="width:30px"> </rich:column>
+	 			</rich:columnGroup>
+	 		</f:facet>
+	 		
+	 		<h:column>
+	 			<h:outputFormat value="{0,number,00000}">
+	 				<f:param value="#{row.id}" />
+	 			</h:outputFormat>
+	 		</h:column>
+	 		<h:column>#{row.company}</h:column>
+	 		<h:column>#{row.amountOfPlaces}</h:column>
+	 		<h:column>
+	 			<h:outputText value="#{row.type}"/>
+	 		</h:column>
+	 		<h:column>
+	 			<h:commandLink action="#{transm.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');return false">
+	 				<h:graphicImage value="#{appCtx.imgRes}/preverify.gif" styleClass="Image"></h:graphicImage>
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{transm.chosenId}"></a4j:actionparam>
+	 			</h:commandLink>
+	 		</h:column>
+	 		<h:column>
+				<a4j:commandLink actionListener="#{transm.removeRecord}" id="Usuniecie" oncomplete="pokaz();">
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{transm.chosenId}"></a4j:actionparam>
+	 				<h:graphicImage value="#{appCtx.imgRes}/delete.gif" styleClass="Image"></h:graphicImage>
+	 			</a4j:commandLink>
+			</h:column>
+	 		
+	 		<f:facet name="footer">
+	 			total: #{transm.amountItems}
+	 		</f:facet>
+	 	</rich:dataTable>
+	 	<rich:spacer height="10" />
+	 	<rich:datascroller id="dataScroller" stepControls="auto" for="filteredTransportList" maxPages="10" />
+   		</h:form>
+   		
+   		
+   		<script type="text/javascript">	
+		//<![CDATA[
+		  	function editRow(el) {
+				//alert(el.sectionRowIndex);
+				var btnEdycja=document.getElementById("transportGridForm:filteredTransportList:"+el.sectionRowIndex+":Edycja");
+				btnEdycja.onclick();
+			}
+			
+			function pokaz() {
+				var btnPokaz=document.getElementById("criteriaForm:Pokaz");
+				btnPokaz.onclick();
+			}
+	    //]]>
+		</script>
+		
+		 
+	
+		
+</ui:component>
