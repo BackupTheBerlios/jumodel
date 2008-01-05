@@ -10,14 +10,14 @@
     xmlns:fn="http://java.sun.com/jsp/jstl/functions">
       	 
     <ui:define name="content">
- 
+ <t:saveState id="savingTransBean" value="#{transm}"></t:saveState>
     	<h:outputText value="Dodawanie nowego środka transportu" rendered="#{transm.editForm.modType=='INSERT'}" ></h:outputText>
 		<h:outputText value="Edycja danych środka transportu" rendered="#{transm.editForm.modType=='UPDATE'}" ></h:outputText>
 		
 		 		 
     	<h:form id="editForm">
 	    	<rich:simpleTogglePanel label="Formularz edycyjny" switchType="client" width="500px" id="mainPanel">
-	    		<t:panelGrid columns="4" styleClass="PanelGrid" headerClass="Center"> 		
+	    		<t:panelGrid columns="2" styleClass="PanelGrid" headerClass="Center"> 		
 	    			<f:facet name="header" >
 	    				<t:div styleClass="Center" style="height:40px; overflow: auto;text-align:left;">
 							<rich:messages id="edit_msgs" errorStyle="color:red"  tooltip="true" showDetail="true"></rich:messages>
@@ -25,36 +25,25 @@
 	    			</f:facet>    	 		
 	       	 		
 		    		<h:outputLabel value="Firma *" for="Company"/>
-		    		<h:inputText value="#{transm.editForm.entry.company}" styleClass="InputText" required="true" id="Company"></h:inputText>
-		    		<h:outputLabel value="Typ pojazdu *" for="type"/>
-		    		<h:selectOneMenu value="#{}" id="userType">
-		    			<f:selectItems value="#{reg.types}"/>
-		    			<f:converter converterId="enumConverter"/>
-		    		</h:selectOneMenu>
+		    		<h:inputText  value="#{transm.editForm.entry.company}" styleClass="InputText" required="true" id="Company">
+		    			<f:validateLength minimum="2"/>
+		    		</h:inputText>
 		    		
-		    		<t:panelGroup colspan="2"> <rich:message for="Imie" styleClass="Message"/> 	</t:panelGroup>
-		    		<t:panelGroup colspan="2"> <rich:message for="Nazwisko" styleClass="Message"/></t:panelGroup>
-		 
+		    		<h:outputLabel value="Typ pojazdu *" for="type"/>
+		    		<h:selectOneMenu value="#{transm.editForm.chosenType}" id="TransportType">
+		    			<f:selectItems value="#{transm.editForm.transportTypes}"/>
+		    			<f:converter converterId="enumConverter"/>
+		    		</h:selectOneMenu>		 
 		    		
 		    		<h:outputLabel value="Liczba miejsc" for="AmountOfPlaces"/>
 		    		<h:inputText value="#{transm.editForm.entry.amountOfPlaces}" styleClass="InputText" required="true" id="AmountOfPlaces">
 		    		</h:inputText>
 	    			
-	    			
-	    			<t:panelGroup colspan="2"> 
-	    				<rich:message for="Pesel"/>
-	    			</t:panelGroup>
-		    		<t:panelGroup colspan="2">
-		    			<rich:message for="Nip"/> 	
-		    		</t:panelGroup>
-	    		
-		    	
-	
 	    			<h:outputLabel value="Uwagi" for="Uwagi"/>
 	    			<h:inputTextarea value="#{transm.editForm.entry.description}" id="Uwagi" rows="6"></h:inputTextarea>
-	    			<h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
+	    			
 	    			<f:facet name="footer">
-	    				<h:commandButton value="Następny" styleClass="Button" onclick="SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_podstawowe');SimpleTogglePanelManager.toggleOnClient('registerForm:Dane_logowania');return false;"></h:commandButton>
+	    				<h:commandButton value="Zatwierdz" styleClass="Button" action="#{transm.editForm.saveTransport}"></h:commandButton>
 	    			</f:facet>
 	    		</t:panelGrid>	
 	  

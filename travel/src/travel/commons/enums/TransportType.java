@@ -1,10 +1,13 @@
 package travel.commons.enums;
 
 public enum TransportType {
-	MINIBUS("Minibus"),
 	BUS("Bus"),
 	PLANE("Samolot"),
-	SHIP("Statek");
+	SHIP("Statek"),
+	TRAIN("Pociag"),
+	COACH("Autokar"),
+	OTHER("inne")
+	;
 	
 	private final String viewName;
 	
@@ -20,4 +23,5 @@ public enum TransportType {
 	public String toString() {
 		return viewName;
 	}
+	
 }

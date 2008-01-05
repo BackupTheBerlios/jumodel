@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
 
+import travel.commons.enums.others.ModyficationType;
 import travel.data.entities.jpa.Quarter;
 import travel.data.entities.jpa.Transport;
 import travel.data.managers.ExternalDataManager;
@@ -40,6 +41,18 @@ public class ExternalDataManagerImpl extends CommonManager implements ExternalDa
 		Transport tr=(Transport) getHibernateTemplate().get(Transport.class, chosenId);
 		getHibernateTemplate().delete(tr);
 		logger.info("Object of id: "+chosenId+" was removed");
+	}
+
+	@Override
+	public void saveOrUpdate(Transport entry, ModyficationType modType) {
+		logger.info("Dodawewanie");
+		if (modType==ModyficationType.INSERT)
+		{
+			getHibernateTemplate().save(entry);
+		}
+		else getHibernateTemplate().update(entry);
+		
+		
 	}
 
 }

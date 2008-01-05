@@ -36,7 +36,7 @@
 	 			<h:outputText value="#{row.type}"/>
 	 		</h:column>
 	 		<h:column>
-	 			<h:commandLink action="#{transm.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');return false">
+	 			<h:commandLink action="#{transm.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
 	 				<h:graphicImage value="#{appCtx.imgRes}/preverify.gif" styleClass="Image"></h:graphicImage>
 	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{transm.chosenId}"></a4j:actionparam>
 	 			</h:commandLink>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import travel.business.facades.ExternalFacade;
+import travel.commons.enums.others.ModyficationType;
 import travel.data.entities.jpa.Quarter;
 import travel.data.entities.jpa.Transport;
 import travel.data.managers.ExternalDataManager;
@@ -40,4 +41,12 @@ public class ExternalFacadeImpl implements ExternalFacade {
 	public void removeTransportById(Integer chosenId) {
 		dataManager.removeTransportById(chosenId);
 	}
+
+	@Override
+	public void saveOrUpdate(Transport entry, ModyficationType modType) {
+		dataManager.saveOrUpdate(entry,modType);
+		// TODO Auto-generated method stub
+		
+	}
 }
+      

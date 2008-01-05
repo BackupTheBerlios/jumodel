@@ -30,17 +30,18 @@ public class TransportManagement extends BaseBean {
 	}
 	
 	public String go2NewForm() {
-		editForm=new EditForm();
+		editForm=new EditForm(externalFacade);
 		editForm.setModType(ModyficationType.INSERT);
 		return Constants.NEW_RECORD;
 	}
 
 	public String go2EditForm() {
-		editForm=new EditForm();
+		editForm=new EditForm(externalFacade);
 		editForm.setModType(ModyficationType.UPDATE);
 		for (Transport t : filteredTransportsList) {
 			if (t.getId().equals(chosenId)) {
 				editForm.entry=t;
+				editForm.setChosenType(t.getType());
 				break;
 			}
 		}
