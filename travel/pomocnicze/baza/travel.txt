@@ -1,0 +1,123 @@
+INSERT INTO `users` (`UserID`, `Name`, `Surname`, `Email`, `Pesel`,`DateOfBirth`,`PhoneNumber`,`PostCode`,`Street`,`Nr`,`NIP`,`Login`,`Password`,`Role`,`Description`) VALUES 
+(1, 'Sylwiusz', 'Pytka', 'jamakasi@wwp.pl',
+84100219412,'1982-01-16','697189821','21-025','Zakopianska',1,2234567890,'tiger','toledo','CUSTOMER','Solidny klient'
+),
+(2, 'Rafal', 'Libik', 'rl@wp.pl',
+84100219411,'1982-01-16','697189821','21-011','Franciszkanska',11,2234567890,'rafal','rafal','CUSTOMER',''
+),
+(3, 'Kamil', 'Lagowski', 'laga1i@wp.pl',
+84100219410,'1984-01-16','697189811','21-043',' Al Jana Pawla',31,1234567111,'kamil','kamil','CUSTOMER',''),
+(4, 'Karol', 'Szewczyk', 'karoli@wp.pl',
+84100219499,'1984-11-16','697189831','21-344','Bazylianowka',31,1234567121,'karol','karol','CUSTOMER',''),
+(5, 'Lukasz', 'Czerwonka', 'lukasz@wp.pl',
+84100219466,'1984-11-16','697189831','21-356','Harnasie',13,1234567121,'lukasz','lukasz','CUSTOMER',''),
+(6, 'Witek', 'Michalak', 'lwitek@wp.pl',
+84100219421,'1966-11-16','697189831','21-377','Poniatowskiego',3,1234567121,'witek','witus','CUSTOMER',''),
+(7, 'Marek', 'Biedacha', 'markok@wp.pl',
+84100219423,'19686-11-16','697189831','21-376','Podzamcze',23,1234562121,'marko','polo','CUSTOMER',''),
+(8, 'Andrzej', 'Olszewski', 'olek@wp.pl',
+84100219424,'19686-11-14','697189831','21-374','Lwowska',23,1234562121,'olek','olo','CUSTOMER',''),
+(9, 'Juzef', 'Skiba', 'skibelek@wp.pl',
+84100219425,'19686-11-14','697189821','21-271','Szwjcarska',23,1234562121,'tomek','qwerty','CUSTOMER',''),
+(10, 'Rysiek', 'Zajac', 'zajack@wp.pl',
+84100219426,'19686-11-14','697189821','21-271','Krakowska',23,1234562121,'waldek','qwerty','CUSTOMER',''),
+(11, 'Zenon', 'Rowinski', 'rowinski@wp.pl',
+84100219427,'19686-11-14','697189821','21-271','Lwowska',23,1234562121,'zenon','qwerty','CUSTOMER',''),
+(12, 'Mateusz', 'Kowalski', 'kowalski@wp.pl',
+84100219428,'19686-11-14','697189821','21-271','Szeligoewskiego',23,1234562121,'bizi','qwerty','CUSTOMER',''),
+(13, 'Juzef', 'Pietrzak', 'peitrzykak@wp.pl',
+84100219429,'19686-11-14','697189821','21-271','Marka Polo',23,1234562121,'juri','qwerty','CUSTOMER',''),
+(14, 'Magda', 'Adamek', 'metekelek@wp.pl',
+84100219430,'19686-11-14','697189821','21-271','Czarneckiego',23,1234562121,'twen','qwerty','CUSTOMER',''),
+(15, 'Wanda', 'Grechuta', 'skibwlek@wp.pl',
+84100219435,'19686-11-14','697189821','21-271','Solidarnosci',23,1234562121,'wasilij','qwertyk','CUSTOMER',''),
+(16, 'Karolina', 'Salega', 'karok@wp.pl',
+84100219441,'19686-11-14','697189821','21-271','Wolnosci',23,1234562121,'tania','qwerty','CUSTOMER',''),
+(17, 'Maciej', 'Kania', 'kaniak@wp.pl',
+84100219449,'19686-11-14','697189821','21-271','Lubartowska',23,1234562121,'john','qwerty','CUSTOMER',''),
+(18, 'Bartosz', 'Ircha', 'irak@wp.pl',
+84100219489,'19686-11-14','697189821','21-271','Zbozowa',23,1234562121,'mekx','juzek','CUSTOMER',''),
+(19, 'Ewa', 'Kowalik', 'kowaleklek@wp.pl',
+84100219498,'19686-11-14','697189821','21-271','Zlota',23,1234562121,'dior','juzek','CUSTOMER',''),
+(20, 'Marta', 'Dzurda', 'sdzielek@wp.pl',
+84100219465,'19686-11-14','697189821','21-271','Srebrna',23,1234562121,'waldi','juzek','CUSTOMER',''),
+(21, 'Michal', 'Michalak', 'sdzielek@wp.pl',
+84100219462,'19686-11-14','697189821','21-271','Srewy',23,1234562121,'pracowenik','pracownik','EMPLOYEE',''),
+(22, 'Karolina', 'Michnik', 'sdzielek@wp.pl',
+84100219461,'19686-11-14','697189821','21-271','Srewy',23,1234562121,'pracowenik1','pracownik1','EMPLOYEE',''),
+(23, 'TOmek', 'Roman', 'sdzielek@wp.pl',
+84100239461,'19686-11-14','697189821','21-271','Srewy',23,1234562121,'root','root','MANAGER','')
+;
+
+
+INSERT INTO `transports` (`TransportID`, `Company`, `Type`, `AmountOfPlaces`, `Description`) VALUES 
+(1, 'Lot', 'PLANE',200,''),
+(2, 'Amazonix', 'COACH',20,''),
+(3, 'BATORY', 'SHIP',200,''),
+(4, 'PKP', 'TRAIN',2000,''),
+(5, 'BUSIX', 'BUS',100,''),
+(6, 'BRYCZKI', 'OTHER',20,''),
+(7, 'Boing', 'PLANE',150,''),
+(8, 'SwidnikLot', 'PLANE',400,''),
+(9, 'Wizzard', 'PLANE',330,'Tanie linie lotnicze'),
+(10, 'BritishAir', 'PLANE',1200,'');
+
+INSERT INTO `quarters` (`QuarterID`, `Name`, `Address`, `Type`, `Luxury`,`Description`) VALUES 
+(1, 'uBraci','ul Waszyngtona', 'MOTEL','NORMAL','Wysoki standard'),
+(2, 'GRAND','Krakowskie Przedmiescie', 'HOTEL','LUXURIOUS','Solidny'),
+(3, 'NOVOTEL','ul Zachodnia', 'HOTEL','VERY_GOOD','Slaba obsluga'),
+(4, 'uBraci','ul Matta', 'OTHER','EXCELLENT','najlepszy wedlug klientow'),
+(5, 'TailandCLass','Plac Czerwony', 'CARAVAN_SITE','NORMAL','dobre wyzywienie'),
+(6, 'VOX','ul Szczegolna','HOTEL','GOOD','drogi'),
+(7, 'HighCLASS','ul Wspolna', 'HOTEL','NORMAL','tani'),
+(8, 'Warszawski','Warszawkie Przedmiscie', 'HOTEL','NORMAL','normalny'),
+(9, 'Merkury','ul GreenPoint', 'HOTEL','NORMAL','solidny'),
+(10, 'Lublinnianka','u Tetmajera', 'HOTEL','NORMAL','');
+
+INSERT INTO `categories` (`CategoryID`, `Name`,`Description`) VALUES 
+(1, 'Wypoczynek','Wycieczka wypoczynkowa'),
+(2, 'Zwiedzanie','Wycieczka nastawiona na zwiedzanie'),
+(3, 'Narty','Wycieczka nastawiona na jazde na nartach'),
+(4, 'Wypoczynek','Wycieczka wypoczynkowa'),
+(5, 'Zwiedzanie + Wypoczynek',''),
+(6, 'Wycieczka obiazdowa','');
+
+
+INSERT INTO `travels` (`TravelID`,`Name`,`Country`,`Place`,`Description`) VALUES 
+(1,'','Hiszpania','Santa Maria',''),
+(2,'','Francja','Paryz',''),
+(3,'','Egipt','Synaj',''),
+(4,'','Wlochy','Mediolan',''),
+(5,'','Polska','Bieszczady',''),
+(6,'','Barbados','Plaza',''),
+(7,'','USA','Wasdzyngton',''),
+(8,'','Czechy','Praga',''),
+(9,'','Portuglia','Lizbona',''),
+(10,'','Tailandia','Taipej',''),
+(11,'','Chiny','Pekin','');
+
+
+INSERT INTO `offers` (`OfferID`,`TravelID`,`TransportID`,`QuarterID`,`CategoryID`,`Name`,`Price`,`Description`) VALUES 
+(1,1,1,1,1,'Offerta 1',2200,''),
+(2,2,2,2,2,'Offerta 2',4200,''),
+(3,4,3,3,3,'Offerta 4',200,''),
+(4,5,4,4,5,'Offerta 5',7200,''),
+(5,6,5,5,1,'Offerta 3',900,''),
+(6,7,6,6,6,'Offerta 6',2200,''),
+(7,5,7,3,3,'Offerta 7',12200,''),
+(8,4,8,4,4,'Offerta 9',12200,''),
+(9,3,9,5,3,'Offerta 8',2200,''),
+(10,1,1,2,1,'Offerta 10',8200,'');
+
+INSERT INTO `expeditions` (`ExpeditionID`,`OfferID`,`DateStop`,`DateFrom`,`DateTo`,`AmountOfPlaces`,`MinPersons`) VALUES 
+(1, 1,'2008-01-01 14:07:16','2008-02-15','2008-02-25',33,20),
+(2, 1,'2008-01-11 14:07:16','2008-02-15','2008-02-25',122,40),
+(3, 2,'2008-01-15 14:07:16','2008-02-15','2008-02-25',20,10),
+(4, 3,'2008-01-15 14:07:16','2008-02-15','2008-02-25',140,100),
+(5, 3,'2008-01-15 14:07:16','2008-02-15','2008-02-25',33,10),
+(6, 4,'2008-01-15 14:07:16','2008-02-15','2008-02-25',100,80),
+(7, 5,'2008-01-15 14:07:16','2008-02-15','2008-02-25',50,45),
+(8, 6,'2008-01-15 14:07:16','2008-02-15','2008-02-25',22,20),
+(9, 7,'2008-01-15 14:07:16','2008-02-15','2008-02-25',10,5),
+(10, 8,'2008-01-15 14:07:16','2008-02-15','2008-02-25',200,90);
+
