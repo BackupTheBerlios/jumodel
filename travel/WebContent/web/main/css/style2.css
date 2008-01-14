@@ -9,8 +9,9 @@ body {
   left: 50%;
   width: 800px;
   margin-left: -400px;
-  padding-bottom: 20px;
   font-size: 90%;
+  background: #DAA520;
+  padding: 1px;
 }
 
 div {
@@ -49,7 +50,7 @@ div {
 	padding: 1px;
 }
 #header	#logo {
-	background: url("../images/logo.gif") no-repeat;
+	background: url("../images/logo.jpg") no-repeat;
 	margin: 0px auto;
 	height: 180px;
 	width: 798px;
