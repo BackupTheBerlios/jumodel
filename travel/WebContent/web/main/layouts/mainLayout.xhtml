@@ -20,39 +20,30 @@
 	
 
 </head>
-<body class="Body">
+<body>
+<div id="main">
 <a4j:region>
-	<div id="gora">
-		<div id="gornyPasek">#{msgs.tytul}</div>
-		<div id="szybkieIkony"></div>
-	</div>
 	<div id="header">
 		<div id="logo"></div>
 	</div>
+	<div>
+		<div id="menuAndCostam">
+		<ui:insert name="menu">
+			<ui:include src="#{appCtx.mainRes}/menu.xhtml" />
+			<ui:include src="#{appCtx.mainRes}/logowanie.xhtml" />
+		</ui:insert>
+		</div>
+	</div>
 	<div id="content">
-			<div id="gornaWartwa">
-				<div id="menuAndCostam">
-				<ui:insert name="menu">
-					<ui:include src="#{appCtx.mainRes}/menu.xhtml" />
-					<ui:include src="#{appCtx.mainRes}/logowanie.xhtml" />
-				</ui:insert>
-				</div>
-				<div id="mainContent">
-				<ui:insert name="content">
-				</ui:insert>
-				</div>
-				<div id="news"></div>
-				<div id="last"></div>
-			</div>
-			<div id="dolnaWarstwa">
-				<div id="giftCards"></div>
-				<div id="mapPlace"></div>
-				<div id="friends"></div>
-			</div>
+		<div id="mainContent">
+			<ui:insert name="content">
+			</ui:insert>
+		</div>			
 	</div>
 	<div id="foot">
-		<ft:trace rendered="#{appCtx.debug}"/>
+		@Copyright: Libiko-Camillo-Sylwo-Szevko Group.
 	</div>
-</a4j:region>			
+</a4j:region>
+</div>		
 </body>      	
 </html>

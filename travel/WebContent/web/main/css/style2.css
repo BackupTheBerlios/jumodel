@@ -1,9 +1,16 @@
 @CHARSET "UTF-8";
 
 body {
-	margin: 0;
-	padding: 0;
-	margin-top: 20px;
+	background: #4A689A url(../images/bg2.jpg) repeat-x scroll center top;
+	width: 100%;
+}
+#main{
+  position: absolute;
+  left: 50%;
+  width: 800px;
+  margin-left: -400px;
+  padding-bottom: 20px;
+  font-size: 90%;
 }
 
 div {
@@ -38,18 +45,32 @@ div {
 }
 
 #header {
-	background: silver;
+	background-color:#DFE5EE;
+	padding: 1px;
 }
 #header	#logo {
-	background: url("../images/logo.jpg") no-repeat;
+	background: url("../images/logo.gif") no-repeat;
 	margin: 0px auto;
 	height: 180px;
-	width: 775px;
+	width: 798px;
 }
 
 #content {
-	/*border: 1px solid red;*/
-	overflow: visible;
+	background-color:#DFE5EE;
+	padding: 10px;
+	padding-bottom: 100px;
+}
+#foot{
+	text-align: center;
+	padding: 4px 0px;
+	background-color:#4A75B5;
+	background-image:url(/travel/faces/a4j_3_1_0org.richfaces.renderkit.html.GradientA/DATB/eAF7emTy1lIvAA7XA7E_);
+	background-position:left top;
+	background-repeat:repeat-x;
+	border:1px solid #C0C0C0;
+	ont-family:Arial,Verdana,sans-serif;
+	font-size:11px;
+	color: #FFF;
 }
 
 
@@ -84,16 +105,6 @@ div {
 
 }
 
-
-
-.Body{
-	background-color:#DFE5EE;
-	font-weight:normal;
-	border-style:none;
-	font-family: Verdana,sans-serif,Arial;
-	margin:0px;
-	width:100%;
-}
 
 .Center {
 	margin: auto auto;	
