@@ -14,15 +14,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>ParadiseTour - niezapomniane wrażenia</title>
 	<base href="#{appCtx.baseUrl}"/>
-	<link rel="Stylesheet" type="text/css" href="#{appCtx.cssRes}/style2.css"/>
+	<link rel="Stylesheet" type="text/css" href="#{appCtx.cssRes}/style.css"/>
 	<script src="/travel#{appCtx.mainRes}/js/travel.js"></script>
 	<f:loadBundle basename="travel.jsf.messages.messages" var="msgs"/>
 	
 
 </head>
 <body>
-<div id="main">
 <a4j:region>
+<div id="main">
 	<div id="header">
 		<div id="logo">
 			<div id="infoLog">
@@ -47,7 +47,9 @@
 	<div id="foot">
 		@Copyright: Libiko-Camillo-Sylwo-Szevko Group.
 	</div>
-</a4j:region>
 </div>		
+<a4j:outputPanel ajaxRendered="true"></a4j:outputPanel>
+<ft:trace rendered="#{appCtx.debug}" id="debugTrace"/>
+</a4j:region>
 </body>      	
 </html>

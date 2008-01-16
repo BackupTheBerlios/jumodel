@@ -1,0 +1,17 @@
+<!-- 
+	Jeśli nie posiadamy pliku context.xml to tworzymy kopie tego pliku: context_TEMPLATE.xml
+	i zmieniamy nazwe tej kopii na context.xml, po czym uzupelniamy pola username i password
+	znajdujące sie poniżej.
+	
+	Nalezy pamietac aby nigdy nie commitowac pliku context.xml
+	Najlepiej dodać go do ignorowanych.
+	W perspektywie cvs -> prawym i add to cvs ignore
+ -->
+<Context docBase="travel" path="/travel" reloadable="true" debug="5" crossContext="true">
+  <Resource name="jdbc/TravelDB" auth="Container"
+            type="javax.sql.DataSource" username="[login_do_bazy]" password="[haslo]"
+            driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/travel?autoReconnect=true"
+            maxActive="8" maxIdle="4"/>
+            
+	<Loader loaderClass="org.springframework.instrument.classloading.tomcat.TomcatInstrumentableClassLoader"/>
+</Context>
