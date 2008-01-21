@@ -9,14 +9,14 @@
       	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
       	xmlns:sql="http://java.sun.com/jsp/jstl/sql"> 
-
+<a4j:region id="loginRegion">
         <rich:modalPanel id="logowanie" minHeight="175" minWidth="250"
             height="220" width="300" zindex="2000" style="padding:0px">
             <f:facet name="header">
                 <h:outputText value="Zaloguj się" />
             </f:facet>
             <f:facet name="controls">
-                <h:graphicImage value="/images/modal/close.png" style="cursor:pointer" onclick="Richfaces.hideModalPanel('logowanie')" />
+                <h:graphicImage value="#{appCtx.imgRes}/close.gif" style="cursor:pointer" onclick="Richfaces.hideModalPanel('logowanie')" />
             </f:facet>
 			<a4j:form id="authForm">
 				<h:panelGrid columns="2" cellspacing="5px" styleClass="PanelGrid Center" style="padding-top:0px">
@@ -27,8 +27,14 @@
 					</f:facet>
 					<b>Login:</b> <h:inputText id="login" value="#{auth.login}" required="true" styleClass="InputText"></h:inputText>
 					<b>Hasło:</b> <h:inputSecret id="password" value="#{auth.passwd}" required="true" styleClass="InputText"></h:inputSecret>
-					<h:panelGroup/><a4j:commandButton  action="#{auth.login}" value="Zaloguj" type="submit" styleClass="Button" reRender="mainToolbar, log_msgs" oncomplete="testPassAuth()"></a4j:commandButton>
-					<h:panelGroup/><h:commandButton id="btnAuthCancel" action="HOME" value="Anuluj" styleClass="Button" onclick="Richfaces.hideModalPanel('logowanie');return false"></h:commandButton>
+					
+					<h:panelGroup/>
+					<h:panelGroup>
+						<a4j:commandButton  action="#{auth.login}" value="Zaloguj" type="submit" styleClass="Button" reRender="mainToolbar, log_msgs" oncomplete="testPassAuth()"></a4j:commandButton>
+						<ui:include src="/web/main/common/ajaxLoading.xhtml"/>
+					</h:panelGroup>
+					<h:panelGroup/>
+					<h:commandButton id="btnAuthCancel" action="HOME" value="Anuluj" styleClass="Button" onclick="Richfaces.hideModalPanel('logowanie');return false"></h:commandButton>
 					
 				</h:panelGrid>
 	  
@@ -53,6 +59,5 @@
 			</a4j:form>
 		
         </rich:modalPanel>
-        
-        
+</a4j:region>
 </ui:component>

@@ -10,12 +10,12 @@
 	
 	<h:form>
 	<rich:panel style="text-align:right">
-		<h:commandButton action="#{transm.go2NewForm}" value="Dodaj nowy" styleClass="Button" id="addEntry" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+		<h:commandButton action="#{travelm.go2NewForm}" value="Dodaj nowy" styleClass="Button" id="addEntry" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
 	 	</h:commandButton>
-	 	 <a4j:commandButton action="#{transm.go2SourceSite}" value="Wybierz" styleClass="Button" id="selectEntry" onclick="if (rowId==null) return onClickSelectBtn(); else onClickSelectBtn();" rendered="#{!empty transm.sourceSite}">
-	 		<a4j:actionparam name="id" value="rowId" assignTo="#{transm.chosenId}" noEscape="true" />
-	 	 </a4j:commandButton>
-	
+	 	<a4j:commandButton  action="#{travelm.go2SourceSite}" value="Wybierz" styleClass="Button" id="selectEntry" onclick="if (rowId==null) return onClickSelectBtn(); else onClickSelectBtn();" rendered="#{!empty travelm.sourceSite}">
+	 		<a4j:actionparam name="id" value="rowId" assignTo="#{travelm.chosenId}" noEscape="true" />
+	 	</a4j:commandButton>
+	 	
 	</rich:panel>
 	</h:form>	
 	<script type="text/javascript">	

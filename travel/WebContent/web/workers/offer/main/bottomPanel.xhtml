@@ -10,12 +10,14 @@
 	
 	<h:form>
 	<rich:panel style="text-align:right">
-		<h:commandButton action="#{transm.go2NewForm}" value="Dodaj nowy" styleClass="Button" id="addEntry" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+		<h:commandButton action="#{offerm.go2NewForm}" value="Dodaj nowy" styleClass="Button" id="addEntry" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+			
 	 	</h:commandButton>
-	 	 <a4j:commandButton action="#{transm.go2SourceSite}" value="Wybierz" styleClass="Button" id="selectEntry" onclick="if (rowId==null) return onClickSelectBtn(); else onClickSelectBtn();" rendered="#{!empty transm.sourceSite}">
-	 		<a4j:actionparam name="id" value="rowId" assignTo="#{transm.chosenId}" noEscape="true" />
+	 
+	 	<rich:spacer width="5px"></rich:spacer>
+	 	 <a4j:commandButton action="Pokaz ekspedycje" value="Pokaz ekspedycje" styleClass="Button" id="selectEntry" onclick="if (rowId==null) return onClickSelectBtn(); else onClickSelectBtn();" >
+	 		<a4j:actionparam name="id" value="rowId" assignTo="#{offerm.chosenId}" noEscape="true" />
 	 	 </a4j:commandButton>
-	
 	</rich:panel>
 	</h:form>	
 	<script type="text/javascript">	
@@ -25,8 +27,8 @@
 					alert('Musisz zaznaczyć jakiś wiersz');
 					return false;
 				}
-				showCloud();
-				moveCloud('Powrót do strony źródłowej...');
+				//showCloud();
+				//moveCloud('Proszę czekać...');
 			}
 	    //]]>
 		</script>

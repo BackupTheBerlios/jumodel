@@ -1,0 +1,35 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+
+	<h:form id="criteriaForm">
+	<rich:simpleTogglePanel switchType="client" label="Kryteria wyboru:" >
+		<h:panelGrid columns="9">
+			<h:outputLabel value="Typ kwatery" for="quarterType"></h:outputLabel>
+			<h:selectOneMenu value="#{quarterm.criteria.chosenType}" id="quarterType">
+				<f:selectItems value="#{quarterm.criteria.types}"/>
+				<f:converter converterId="enumConverter" />
+			</h:selectOneMenu>
+			<h:outputLabel value="Poziom luksusu" for="quarterLuxury"></h:outputLabel>
+			<h:selectOneMenu value="#{quarterm.criteria.chosenLuxury}" id="quarterLuxury">
+				<f:selectItems value="#{quarterm.criteria.luxuries}"/>
+				<f:converter converterId="enumConverter" />
+			</h:selectOneMenu>
+			<h:outputLabel value="Nazwa" for="name"></h:outputLabel>
+			<h:inputText value="#{quarterm.criteria.name}" id="name" ></h:inputText>
+			<h:outputLabel value="Adres" for="address"></h:outputLabel>
+			<h:inputText value="#{quarterm.criteria.address}" id="address"></h:inputText>
+			
+			<a4j:commandButton value="Pokaż" id="Pokaz" type="submit" actionListener="#{quarterm.fillTable}" styleClass="Button" reRender="filteredQuarterList, dataScroller"></a4j:commandButton>
+			<ui:include src="/web/main/common/ajaxLoading.xhtml">
+			</ui:include>
+		</h:panelGrid>
+    </rich:simpleTogglePanel>
+    </h:form>   
+</ui:component>

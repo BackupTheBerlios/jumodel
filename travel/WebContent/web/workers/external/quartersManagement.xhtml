@@ -11,16 +11,16 @@
       	
       	 
     <ui:define name="content">
-    	<t:saveState id="savingTransBean" value="#{transm}"></t:saveState>
+    	<t:saveState id="savingQuartBean" value="#{quarterm}"></t:saveState>
 	    <t:panelGrid columns="1" styleClass="Center" width="90%">
 	    	<t:panelGroup styleClass="Center, CellMiddle">
-	    		<h2><h:outputText binding="#{transm.uiTitle}"></h:outputText></h2>
+	    		<h2><h:outputText binding="#{quarterm.uiTitle}"></h:outputText></h2> 
 	    	</t:panelGroup>
-	    	<ui:include src="/web/workers/external/transport/criteriaPanel.xhtml" />
+	    	<ui:include src="/web/workers/external/quarter/criteriaPanel.xhtml" />
 	    	<rich:spacer height="10px"></rich:spacer>
-	    	<ui:include src="/web/workers/external/transport/gridPanel.xhtml" />
+	    	<ui:include src="/web/workers/external/quarter/gridPanel.xhtml" />
 	    	<rich:spacer height="20px"></rich:spacer>
-	    	<ui:include src="/web/workers/external/transport/bottomPanel.xhtml" />
+	    	<ui:include src="/web/workers/external/quarter/bottomPanel.xhtml" />
 	    </t:panelGrid>
     </ui:define>
 </ui:composition>

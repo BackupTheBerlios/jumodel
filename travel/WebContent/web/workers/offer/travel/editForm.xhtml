@@ -11,9 +11,9 @@
       	 
     <ui:define name="content">
     <a4j:region id="editRegion">
- 		<t:saveState id="savingTransBean" value="#{transm}"></t:saveState>
-    	<h:outputText value="Dodawanie nowego środka transportu" rendered="#{transm.editForm.modType=='INSERT'}" ></h:outputText>
-		<h:outputText value="Edycja danych środka transportu" rendered="#{transm.editForm.modType=='UPDATE'}" ></h:outputText>
+ 		<t:saveState id="savingTravelBean" value="#{travelm}"></t:saveState>
+    	<h:outputText value="Dodawanie nowego środka travelu" rendered="#{travelm.editForm.modType=='INSERT'}" ></h:outputText>
+		<h:outputText value="Edycja danych środka travelu" rendered="#{travelm.editForm.modType=='UPDATE'}" ></h:outputText>
 		
 		 		 
     	<h:form id="editForm">
@@ -25,29 +25,29 @@
 						</t:div>
 	    			</f:facet>    	 		
 	       	 		
-		    		<h:outputLabel value="Firma *" for="Company"/>
-		    		<h:inputText  value="#{transm.editForm.entry.company}" styleClass="InputText" required="true" id="Company">
+		    		<h:outputLabel value="Nazwa *" for="Name"/>
+		    		<h:inputText  value="#{travelm.editForm.entry.name}" styleClass="InputText" required="true" id="Name" size="35">
 		    			<f:validateLength minimum="2"/>
 		    		</h:inputText>
 		    		
-		    		<h:outputLabel value="Typ pojazdu *" for="transportType"/>
-		    		<h:selectOneMenu value="#{transm.editForm.entry.type}" id="transportType">
-		    			<f:selectItems value="#{transm.editForm.transportTypes}"/>
-		    			<f:converter converterId="enumConverter"/>
-		    		</h:selectOneMenu>		 
-		    		
-		    		<h:outputLabel value="Liczba miejsc" for="AmountOfPlaces"/>
-		    		<h:inputText value="#{transm.editForm.entry.amountOfPlaces}" styleClass="InputText" required="true" id="AmountOfPlaces">
+		    		<h:outputLabel value="Kraj *" for="Country"/>
+		    		<h:inputText  value="#{travelm.editForm.entry.country}" styleClass="InputText" required="true" id="Country">
+		    			<f:validateLength minimum="2"/>
 		    		</h:inputText>
+		    		
+		    		<h:outputLabel value="Miejsce *" for="Place"/>
+		    		<h:inputText  value="#{travelm.editForm.entry.place}" styleClass="InputText" required="true" id="Place">
+		    			<f:validateLength minimum="2"/>
+		    		</h:inputText>	 
 	    			
 	    			<h:outputLabel value="Uwagi" for="Uwagi"/>
-	    			<h:inputTextarea value="#{transm.editForm.entry.description}" id="Uwagi" rows="6"></h:inputTextarea>
+	    			<h:inputTextarea value="#{travelm.editForm.entry.description}" id="Uwagi" rows="6"></h:inputTextarea>
 	    			
 	    			<f:facet name="footer">
 	    				<h:panelGroup>
 	    					<h:commandButton action="BACK_TO_LIST" immediate="true" value="Powrót do listy" styleClass="Button"></h:commandButton>
 	    					<rich:spacer width="5px" ></rich:spacer>
-	    					<a4j:commandButton value="Zatwierdz" styleClass="Button" actionListener="#{transm.editForm.saveTransport}" reRender="editForm"></a4j:commandButton>
+	    					<a4j:commandButton value="Zatwierdz" styleClass="Button" actionListener="#{travelm.editForm.saveTravel}" reRender="editForm"></a4j:commandButton>
 	    					<ui:include src="/web/main/common/ajaxLoading.xhtml" />
 	    				</h:panelGroup>
 	    			</f:facet>

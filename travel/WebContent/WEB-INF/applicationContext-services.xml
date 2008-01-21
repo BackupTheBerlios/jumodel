@@ -25,5 +25,10 @@
 	<bean id="externalFacade" class="travel.business.facades.impl.ExternalFacadeImpl">
 		<property name="dataManager" ref="externalDataManager"/>
 	</bean>
-	
+	<bean id="offerFacade" class="travel.business.facades.impl.OfferFacadeImpl">
+		<property name="dataManager" ref="offerDataManager"/>
+	</bean>
+	<bean id="expeditionFacade" class="travel.business.facades.impl.ExpeditionFacadeImpl">
+		<property name="dataManager" ref="expeditionDataManager"/>
+	</bean>
 </beans>

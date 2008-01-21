@@ -26,11 +26,12 @@
 	        	<rich:menuItem action="#{auth.logout}" value="Wyloguj" rendered="#{user.logged}"></rich:menuItem>       
 	        </rich:dropDownMenu>
 	        <rich:dropDownMenu value="Oferty">
-	        	<rich:menuItem value="Przeglądaj wybrane oferty"></rich:menuItem>
-	        	<rich:menuItem value="Wyszukaj ofertę"></rich:menuItem>
+	        	<rich:menuItem value="Zarządzanie ofertami" action="OFFER_MANAGE"></rich:menuItem>
+	        	<rich:menuItem value="Zarządzanie wycieczkami" action="TRAVEL_MANAGE"></rich:menuItem>
 	        </rich:dropDownMenu>
 	        <rich:dropDownMenu value="Dane zewnętrzne">
 	        	<rich:menuItem value="Zarządzanie środkami transportu" action="TRANSPORT_MANAGE"></rich:menuItem>
+	        	<rich:menuItem value="Zarządzanie kwaterami" action="QUARTER_MANAGE"></rich:menuItem>
 	        	<rich:menuItem value="Wyszukaj ofertę"></rich:menuItem>
 	        </rich:dropDownMenu>
 	        

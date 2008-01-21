@@ -8,8 +8,8 @@
       	xmlns:c="http://java.sun.com/jstl/core"
       	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
 
-		<h:form id="transportGridForm">
-	 	<rich:dataTable value="#{transm.filteredTransportsList}" var="row" id="filteredTransportList"
+		<h:form id="travelGridForm">
+	 	<rich:dataTable value="#{travelm.filteredTravelsList}" var="row" id="filteredTravelList"
 	 	  	onRowMouseOver="mouseOver(this)"
 			onRowMouseOut="mouseOut(this)" 
 			onRowClick="selectRow(this);"
@@ -18,9 +18,9 @@
 	 		<f:facet name="header">
 	 			<rich:columnGroup>
 	 				<rich:column>ID</rich:column>
-	 				<rich:column>Firma</rich:column>
-	 				<rich:column>Liczba miejsc</rich:column>
-	 				<rich:column>Typ transportu</rich:column>
+	 				<rich:column>Nazwa</rich:column>
+	 				<rich:column>Kraj</rich:column>
+	 				<rich:column>Miejsce</rich:column>
 	 				<rich:column style="width:30px"> </rich:column>
 	 				<rich:column style="width:30px"> </rich:column>
 	 			</rich:columnGroup>
@@ -31,30 +31,28 @@
 	 				<f:param value="#{row.id}" />
 	 			</h:outputFormat>
 	 		</h:column>
-	 		<h:column>#{row.company}</h:column>
-	 		<h:column>#{row.amountOfPlaces}</h:column>
+	 		<h:column>#{row.name}</h:column>
+	 		<h:column>#{row.country}</h:column>
+	 		<h:column>#{row.place}</h:column>
 	 		<h:column>
-	 			<h:outputText value="#{row.type}"/>
-	 		</h:column>
-	 		<h:column>
-	 			<h:commandLink action="#{transm.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+	 			<h:commandLink action="#{travelm.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
 	 				<h:graphicImage value="#{appCtx.imgRes}/preverify.gif" styleClass="Image"></h:graphicImage>
-	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{transm.chosenId}"></a4j:actionparam>
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{travelm.chosenId}"></a4j:actionparam>
 	 			</h:commandLink>
 	 		</h:column>
 	 		<h:column>
-				<a4j:commandLink actionListener="#{transm.removeRecord}" id="Usuniecie" oncomplete="pokaz();">
-	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{transm.chosenId}"></a4j:actionparam>
+				<a4j:commandLink actionListener="#{travelm.removeRecord}" id="Usuniecie" oncomplete="pokaz();">
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{travelm.chosenId}"></a4j:actionparam>
 	 				<h:graphicImage value="#{appCtx.imgRes}/delete.gif" styleClass="Image"></h:graphicImage>
 	 			</a4j:commandLink>
 			</h:column>
 	 		
 	 		<f:facet name="footer">
-	 			total: #{transm.amountItems}
+	 			total: #{travelm.amountItems}
 	 		</f:facet>
 	 	</rich:dataTable>
 	 	<rich:spacer height="10" />
-	 	<rich:datascroller id="dataScroller" stepControls="auto" for="filteredTransportList" maxPages="10" />
+	 	<rich:datascroller id="dataScroller" stepControls="auto" for="filteredTravelList" maxPages="10" />
    		</h:form>
    		
    		
@@ -65,7 +63,7 @@
 			function selectRow(row) {
 				if (currRowSelected!=null)
 					currRowSelected.style.backgroundColor='#{a4jSkin.tableBackgroundColor}';
-				row.style.backgroundColor='#FFFFAF';
+				row.style.backgroundColor='pink';
 				rowId=row.firstChild.textContent;
 				currRowSelected=row;
 			
@@ -80,12 +78,13 @@
 				if (row!=currRowSelected)
 					row.style.backgroundColor='#{a4jSkin.tableBackgroundColor}';
 			}
+			
 		  	function editRow(el) {
 				//alert(el.sectionRowIndex);
-				//"transportGridForm:filteredTransportList:7:_id68"
+				//"travelGridForm:filteredTravelList:7:_id68"
 				var splitedIdArray=el.firstChild.id.split(':');
 				var rowNrId=splitedIdArray[2];
-				var btnEdycja=document.getElementById("transportGridForm:filteredTransportList:"+rowNrId+":Edycja");
+				var btnEdycja=document.getElementById("travelGridForm:filteredTravelList:"+rowNrId+":Edycja");
 				btnEdycja.onclick();
 			}
 			

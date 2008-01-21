@@ -24,5 +24,6 @@
 	
 	<context:annotation-config />
     <context:component-scan base-package="travel.business.facades"/>
+    
  
 </beans>

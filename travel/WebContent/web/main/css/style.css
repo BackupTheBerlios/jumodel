@@ -142,18 +142,13 @@ font-size: 12px;
 	padding-top: 20px;
 }
 
-.InputText{
+.InputText, input, textarea, select{
 	border: 1px solid #8FACE6;
 	background-color: white;
 }
 
-.InputText:active{
-	border: 1px solid #6992DE;
-	background-color: orange;
-	vertical-align: middle;
-}
 
-.InputText:FOCUS {
+.InputText:FOCUS, input:focus, textarea:focus, select:focus {
 	background-color: #FFFFAF;
 }
 

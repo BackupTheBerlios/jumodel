@@ -34,9 +34,13 @@
 	 
 	    		
 	    		<h:outputLabel value="Pesel" for="Pesel"/>
-	    		<h:inputText value="#{reg.dbUser.pesel}" styleClass="InputText" required="true" id="Pesel"></h:inputText>
+	    		<h:inputText value="#{reg.dbUser.pesel}" styleClass="InputText" required="true" id="Pesel">
+	    			<f:validateLength minimum="11" maximum="11"/>
+	    		</h:inputText>
     			<h:outputLabel value="Nip" for="Nip"/>
-    			<h:inputText value="#{reg.dbUser.nip}" styleClass="InputText" id="Nip"></h:inputText>
+    			<h:inputText value="#{reg.dbUser.nip}" styleClass="InputText" id="Nip">
+    				<f:validateLength minimum="10" maximum="10"/>
+    			</h:inputText>
     			
     			<t:panelGroup colspan="2"> 
     				<rich:message for="Pesel"/>
@@ -46,7 +50,7 @@
 	    		</t:panelGroup>
     			
     			<h:outputLabel value="Data urodzenia" for="Data_urodzenia"/> 
-    			<rich:calendar value="#{reg.dbUser.dateOfBirth}" id="Data_urodzenia" styleClass="InputText"/> 			
+    			<rich:calendar immediate="true"  value="#{reg.dbUser.dateOfBirth}" id="Data_urodzenia" styleClass="InputText"/> 			
 	    		<h:outputLabel value="Typ użytkownika" for="userType"></h:outputLabel>
 	    		<h:selectOneMenu value="#{reg.chosenType}" id="userType">
 	    			<f:selectItems value="#{reg.types}"/>

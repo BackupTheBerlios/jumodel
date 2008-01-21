@@ -6,15 +6,10 @@
   <converter-id>enumConverter</converter-id>
   <converter-class>travel.jsf.converters.EnumConverter</converter-class>
  </converter>
- <managed-bean>
-  <managed-bean-name>quarterMain</managed-bean-name>
-  <managed-bean-class>travel.jsf.mBeans.bBeans.trip.quarters.QuarterMain</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
-  <managed-property>
-   <property-name>facade</property-name>
-   <value>#{externalFacade}</value>
-  </managed-property>
- </managed-bean>
+ <converter>
+  <converter-for-class>java.lang.Integer</converter-for-class>
+  <converter-class>travel.jsf.converters.NullIntegerConverter</converter-class>
+ </converter>
  <managed-bean>
   <managed-bean-name>appCtx</managed-bean-name>
   <managed-bean-class>travel.jsf.mBeans.main.AppContext</managed-bean-class>
@@ -95,8 +90,42 @@
    <value>#{externalFacade}</value>
   </managed-property>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>quarterm</managed-bean-name>
+  <managed-bean-class>travel.jsf.mBeans.bBeans.external.quarter.QuarterManagement</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+  <managed-property>
+   <property-name>externalFacade</property-name>
+   <property-class>travel.business.facades.ExternalFacade</property-class>
+   <value>#{externalFacade}</value>
+  </managed-property>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>offerm</managed-bean-name>
+  <managed-bean-class>travel.jsf.mBeans.bBeans.trip.offer.OfferManagement</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>offerFacade</property-name>
+   <property-class>travel.business.facades.OfferFacade</property-class>
+   <value>#{offerFacade}</value>
+  </managed-property>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>travelm</managed-bean-name>
+  <managed-bean-class>travel.jsf.mBeans.bBeans.trip.travel.TravelManagement</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+  <managed-property>
+   <property-name>offerFacade</property-name>
+   <property-class>travel.business.facades.OfferFacade</property-class>
+   <value>#{offerFacade}</value>
+  </managed-property>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>*</from-view-id>
+  <navigation-case>
+   <from-outcome>TRAVEL_MANAGE</from-outcome>
+   <to-view-id>/web/workers/offer/travel.xhtml</to-view-id>
+  </navigation-case>
   <navigation-case>
    <from-outcome>HOME</from-outcome>
    <to-view-id>/web/main/home.xhtml</to-view-id>
@@ -112,6 +141,14 @@
   <navigation-case>
    <from-outcome>TRANSPORT_MANAGE</from-outcome>
    <to-view-id>/web/workers/external/transportsManagement.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>QUARTER_MANAGE</from-outcome>
+   <to-view-id>/web/workers/external/quartersManagement.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>OFFER_MANAGE</from-outcome>
+   <to-view-id>/web/workers/offer/offer.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -130,6 +167,95 @@
   <navigation-case>
    <from-outcome>NEW_RECORD</from-outcome>
    <to-view-id>/web/workers/external/transport/editForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>ASSIGN2OFFERM</from-outcome>
+   <to-view-id>/web/workers/offer/editor/editForm.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/web/workers/external/transport/editForm.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>BACK_TO_LIST</from-outcome>
+   <to-view-id>/web/workers/external/transportsManagement.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/web/workers/external/quartersManagement.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>EDIT_RECORD</from-outcome>
+   <to-view-id>/web/workers/external/quarter/editForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>NEW_RECORD</from-outcome>
+   <to-view-id>/web/workers/external/quarter/editForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>ASSIGN2OFFERM</from-outcome>
+   <to-view-id>/web/workers/offer/editor/editForm.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>quarterEditForm</display-name>
+  <from-view-id>/web/workers/external/quarter/editForm.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>BACK_TO_LIST</from-outcome>
+   <to-view-id>/web/workers/external/quartersManagement.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/web/workers/offer/offer.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>EDIT_RECORD</from-outcome>
+   <to-view-id>/web/workers/offer/editor/editForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>NEW_RECORD</from-outcome>
+   <to-view-id>/web/workers/offer/editor/editForm.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/web/workers/offer/travel.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>EDIT_RECORD</from-outcome>
+   <to-view-id>/web/workers/offer/travel/editForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>NEW_RECORD</from-outcome>
+   <to-view-id>/web/workers/offer/travel/editForm.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>ASSIGN2OFFERM</from-outcome>
+   <to-view-id>/web/workers/offer/editor/editForm.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/web/workers/offer/travel/editForm.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>BACK_TO_LIST</from-outcome>
+   <to-view-id>/web/workers/offer/travel.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/web/workers/offer/editor/editForm.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>SELECT_TRAVEL</from-outcome>
+   <to-view-id>/web/workers/offer/travel.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>BACK_TO_LIST</from-outcome>
+   <to-view-id>/web/workers/offer/offer.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>SELECT_QUARTER</from-outcome>
+   <to-view-id>/web/workers/external/quartersManagement.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>SELECT_TRANSPORT</from-outcome>
+   <to-view-id>/web/workers/external/transportsManagement.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application>

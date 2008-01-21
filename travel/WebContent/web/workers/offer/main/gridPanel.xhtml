@@ -1,0 +1,154 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+
+		<h:form id="offerGridForm">
+	 	<rich:dataTable value="#{offerm.filteredOffersList}" var="row" id="filteredOfferList"
+	 	  	onRowMouseOver="mouseOver(this)"
+			onRowMouseOut="mouseOut(this)" 
+			onRowClick="selectRow(this);"
+			width="100%" rows="5" onRowDblClick="editRow(this)" >
+		
+	 		<f:facet name="header">
+	 			<rich:columnGroup>
+	 				<rich:column>ID</rich:column>
+	 				<rich:column>Nazwa oferty</rich:column>
+	 				<rich:column>Kategoria</rich:column>
+	 				<rich:column>Kraj</rich:column>
+	 				<rich:column>Cena bazowa</rich:column>
+	 				<rich:column>Typ transportu</rich:column>
+	 				<rich:column>Typ kwatery</rich:column>
+	 				<rich:column style="width:30px"> </rich:column>
+	 				<rich:column style="width:30px"> </rich:column>
+	 			</rich:columnGroup>
+	 		</f:facet>
+	 		
+	 		<h:column>
+	 			<h:outputFormat value="{0,number,00000}">
+	 				<f:param value="#{row.id}" />
+	 			</h:outputFormat>
+	 		</h:column>
+	 		<h:column>
+	 			#{row.name}
+	 			<rich:toolTip followMouse="false" direction="top-right" mode="client" delay="30" styleClass="tooltip" immediate="true" layout="block">
+						<t:panelGrid columns="4">
+							<f:facet name="header">
+								<h:outputText value="Szczegóły oferty:" />
+							</f:facet>
+							<h:outputText value="ID:" />
+							<h:outputText value="#{row.id}" styleClass="tooltipData" />
+							<h:outputText value="Nazwa oferty:" />
+							<h:outputText value="#{row.name}" styleClass="tooltipData" />
+							
+							<h:outputText value="Kategoria:" />
+							<h:outputText value="#{row.category.name}" styleClass="tooltipData" />
+							<h:outputText value="Kraj:" />
+							<h:outputText value="#{row.travel.country}" styleClass="tooltipData" />
+							
+							<h:outputText value="Miejsce:" />
+							<h:outputText value="#{row.travel.place}" styleClass="tooltipData"/>
+							<h:outputText value="Cena bazowa:" />
+							<h:outputText value="#{row.price}" styleClass="tooltipData" />
+							
+							<h:outputText value="Typ transportu:" />
+							<h:outputText value="#{row.transport.type}" styleClass="tooltipData"/>
+							<h:outputText value="Firma transportowa:" />
+							<h:outputText value="#{row.transport.company}" styleClass="tooltipData"/>
+							
+							<h:outputText value="Typ kwatery:" />
+							<h:outputText value="#{row.quarter.type}" styleClass="tooltipData"/>
+							<h:outputText value="Poziom komfortu:" />
+							<h:outputText value="#{row.quarter.luxury}" styleClass="tooltipData"/>
+							
+							<h:outputText value="Nazwa kwatery:" />
+							<h:outputText value="#{row.quarter.name}" styleClass="tooltipData"/>
+							<h:outputText value="Adres:" />
+							<h:outputText value="#{row.quarter.address}" styleClass="tooltipData"/>
+							
+							<f:facet name="footer">
+								<t:panelGroup colspan="4">
+									<h:outputText value="Uwagi:" />
+									<h:outputText value="#{row.description}" styleClass="tooltipData"/>
+								</t:panelGroup>
+							</f:facet>
+						</t:panelGrid>
+					</rich:toolTip>
+	 		</h:column>
+	 		<h:column>#{row.category.name}</h:column>
+	 		<h:column>#{row.travel.country}</h:column>
+	 		<h:column>#{row.price}</h:column>
+	 		<h:column>
+	 			<h:outputText value="#{row.transport.type}"/>
+	 		</h:column>
+	 		<h:column>
+	 			<h:outputText value="#{row.quarter.type}"/>
+	 		</h:column>
+	 		<h:column>
+	 			<h:commandLink action="#{offerm.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+	 				<h:graphicImage value="#{appCtx.imgRes}/preverify.gif" styleClass="Image"></h:graphicImage>
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{offerm.chosenId}"></a4j:actionparam>
+	 			</h:commandLink>
+	 		</h:column>
+	 		<h:column>
+				<a4j:commandLink actionListener="#{offerm.removeRecord}" id="Usuniecie" oncomplete="pokaz();">
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{offerm.chosenId}"></a4j:actionparam>
+	 				<h:graphicImage value="#{appCtx.imgRes}/delete.gif" styleClass="Image"></h:graphicImage>
+	 			</a4j:commandLink>
+			</h:column>
+	 		
+	 		<f:facet name="footer">
+	 			total: #{offerm.amountItems}
+	 		</f:facet>
+	 	</rich:dataTable>
+	 	<rich:spacer height="10" />
+	 	<rich:datascroller id="dataScroller" stepControls="auto" for="filteredOfferList" maxPages="10" />
+   		</h:form>
+   		
+   		
+   		<script type="text/javascript">	
+		//<![CDATA[
+			var currRowSelected=null;
+			var rowId=null;
+			function selectRow(row) {
+				if (currRowSelected!=null)
+					currRowSelected.style.backgroundColor='#{a4jSkin.tableBackgroundColor}';
+				row.style.backgroundColor='#FFFFAF';
+				rowId=row.firstChild.textContent;
+				currRowSelected=row;
+			
+			}
+			
+			function mouseOver(row) {
+				if (row!=currRowSelected)
+					row.style.backgroundColor='#F1F1F1';
+			}
+			
+			function mouseOut(row) {
+				if (row!=currRowSelected)
+					row.style.backgroundColor='#{a4jSkin.tableBackgroundColor}';
+			}
+		  	function editRow(el) {
+				//alert(el.sectionRowIndex);
+				var splitedIdArray=el.firstChild.id.split(':');
+				var rowNrId=splitedIdArray[2];
+				var btnEdycja=document.getElementById("offerGridForm:filteredOfferList:"+rowNrId+":Edycja");
+				btnEdycja.onclick();
+			}
+			
+			function pokaz() {
+				var btnPokaz=document.getElementById("criteriaForm:Pokaz");
+				btnPokaz.onclick();
+			}
+	    //]]>
+		</script>
+		
+		 
+	
+		
+</ui:component>

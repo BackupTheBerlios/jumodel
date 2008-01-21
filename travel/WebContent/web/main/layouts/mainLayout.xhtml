@@ -25,9 +25,11 @@
 <div id="main">
 	<div id="header">
 		<div id="logo">
-			<div id="infoLog">
-				Zalogowany jako <span style="color: #FFD700;">Kamillos Lagos</span>
-			</div>
+			<a4j:outputPanel ajaxRendered="true">
+				<t:div id="infoLog" rendered="#{user.logged}">
+					Zalogowany jako <span style="color: #FFD700;">#{user.db.name} #{user.db.surname}</span>
+				</t:div>
+			</a4j:outputPanel>
 		</div>
 	</div>
 	<div>
@@ -49,7 +51,7 @@
 	</div>
 </div>		
 <a4j:outputPanel ajaxRendered="true"></a4j:outputPanel>
-<ft:trace rendered="#{appCtx.debug}" id="debugTrace"/>
+	<ft:trace rendered="#{appCtx.debug}" id="debugTrace"/>
 </a4j:region>
 </body>      	
 </html>

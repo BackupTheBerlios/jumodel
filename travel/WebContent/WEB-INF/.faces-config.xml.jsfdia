@@ -1,62 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS ENTITY="JSFProcess">
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:*" PATH="*" SHAPE="280,136,53,90">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:*" PATH="*" SHAPE="32,17,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:*:0" NAME="item" PATH="*">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="TRAVEL_MANAGE::#web#workers#offer#travel.xhtml" NAME="output6"
+    PATH="/web/workers/offer/travel.xhtml" SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#travel.xhtml" TITLE="TRAVEL_MANAGE"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="HOME::#web#main#home.xhtml" NAME="output"
-    PATH="/web/main/home.xhtml" TARGET="rules:#web#main#home.xhtml" TITLE="HOME"/>
+    PATH="/web/main/home.xhtml" SHAPE="-1,48"
+    TARGET="rules:#web#main#home.xhtml" TITLE="HOME"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="CLIENT_REGISTER::#web#clients#register.xhtml" NAME="output1"
-    PATH="/web/clients/register.xhtml"
+    PATH="/web/clients/register.xhtml" SHAPE="-1,56"
     TARGET="rules:#web#clients#register.xhtml" TITLE="CLIENT_REGISTER"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="WORKER_REGISTER::#web#managers#register.xhtml" NAME="output2"
-    PATH="/web/managers/register.xhtml"
+    PATH="/web/managers/register.xhtml" SHAPE="-1,64"
     TARGET="rules:#web#managers#register.xhtml" TITLE="WORKER_REGISTER"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="TRANSPORT_MANAGE::#web#workers#external#transportsManagement.xhtml"
     NAME="output3"
     PATH="/web/workers/external/transportsManagement.xhtml"
+    SHAPE="-1,24"
     TARGET="rules:#web#workers#external#transportsManagement.xhtml" TITLE="TRANSPORT_MANAGE"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="QUARTER_MANAGE::#web#workers#external#quartersManagement.xhtml"
+    NAME="output4" PATH="/web/workers/external/quartersManagement.xhtml"
+    SHAPE="-1,16"
+    TARGET="rules:#web#workers#external#quartersManagement.xhtml" TITLE="QUARTER_MANAGE"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="OFFER_MANAGE::#web#workers#offer#offer.xhtml" NAME="output5"
+    PATH="/web/workers/offer/offer.xhtml" SHAPE="-1,40"
+    TARGET="rules:#web#workers#offer#offer.xhtml" TITLE="OFFER_MANAGE"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#main#home.xhtml" PATH="/web/main/home.xhtml"
-  SHAPE="488,64,50,25" persistent="true"/>
+  SHAPE="304,657,0,0" persistent="true"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#clients#register.xhtml"
-  PATH="/web/clients/register.xhtml" SHAPE="544,176,50,41">
+  PATH="/web/clients/register.xhtml" SHAPE="304,769,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#clients#register.xhtml:0" NAME="item" PATH="/web/clients/register.xhtml">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="FAILURE::#web#clients#register.xhtml" NAME="output"
-    PATH="/web/clients/register.xhtml"
+    PATH="/web/clients/register.xhtml" SHAPE="-1,56"
     TARGET="rules:#web#clients#register.xhtml" TITLE="FAILURE"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#managers#register.xhtml"
-  PATH="/web/managers/register.xhtml" SHAPE="480,288,50,25" persistent="true"/>
+  PATH="/web/managers/register.xhtml" SHAPE="304,881,0,0" persistent="true"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#workers#external#transportsManagement.xhtml"
-  PATH="/web/workers/external/transportsManagement.xhtml" SHAPE="456,360,50,41">
+  PATH="/web/workers/external/transportsManagement.xhtml" SHAPE="304,337,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#workers#external#transportsManagement.xhtml:0"
    NAME="item" PATH="/web/workers/external/transportsManagement.xhtml">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="EDIT_RECORD::#web#workers#external#transport#editForm.xhtml"
     NAME="output" PATH="/web/workers/external/transport/editForm.xhtml"
-    SHAPE="505,392,520,392,520,456,527,456"
+    SHAPE="-1,16"
     TARGET="rules:#web#workers#external#transport#editForm.xhtml" TITLE="EDIT_RECORD"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="NEW_RECORD::#web#workers#external#transport#editForm.xhtml"
     NAME="output1" PATH="/web/workers/external/transport/editForm.xhtml"
-    SHAPE="505,408,510,408,510,456,527,456"
+    SHAPE="-1,16"
     TARGET="rules:#web#workers#external#transport#editForm.xhtml" TITLE="NEW_RECORD"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="ASSIGN2OFFERM::#web#workers#offer#editor#editForm.xhtml"
+    NAME="output3" PATH="/web/workers/offer/editor/editForm.xhtml"
+    SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#editor#editForm.xhtml" TITLE="ASSIGN2OFFERM"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#workers#external#transport#editForm.xhtml"
-  PATH="/web/workers/external/transport/editForm.xhtml"
-  SHAPE="528,448,50,25" persistent="true"/>
+  PATH="/web/workers/external/transport/editForm.xhtml" SHAPE="576,321,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#external#transport#editForm.xhtml:0"
+   NAME="item" PATH="/web/workers/external/transport/editForm.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="BACK_TO_LIST::#web#workers#external#transportsManagement.xhtml"
+    NAME="output"
+    PATH="/web/workers/external/transportsManagement.xhtml"
+    SHAPE="-1,24"
+    TARGET="rules:#web#workers#external#transportsManagement.xhtml" TITLE="BACK_TO_LIST"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#external#quartersManagement.xhtml"
+  PATH="/web/workers/external/quartersManagement.xhtml" SHAPE="832,33,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#external#quartersManagement.xhtml:0"
+   NAME="item" PATH="/web/workers/external/quartersManagement.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="EDIT_RECORD::#web#workers#external#quarter#editForm.xhtml"
+    NAME="output" PATH="/web/workers/external/quarter/editForm.xhtml"
+    SHAPE="-1,16"
+    TARGET="rules:#web#workers#external#quarter#editForm.xhtml" TITLE="EDIT_RECORD"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="NEW_RECORD::#web#workers#external#quarter#editForm.xhtml"
+    NAME="output1" PATH="/web/workers/external/quarter/editForm.xhtml"
+    SHAPE="-1,16"
+    TARGET="rules:#web#workers#external#quarter#editForm.xhtml" TITLE="NEW_RECORD"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="ASSIGN2OFFERM::#web#workers#offer#editor#editForm.xhtml"
+    NAME="output2" PATH="/web/workers/offer/editor/editForm.xhtml"
+    SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#editor#editForm.xhtml" TITLE="ASSIGN2OFFERM"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#external#quarter#editForm.xhtml"
+  PATH="/web/workers/external/quarter/editForm.xhtml" SHAPE="1072,17,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#external#quarter#editForm.xhtml:0" NAME="item" PATH="/web/workers/external/quarter/editForm.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="BACK_TO_LIST::#web#workers#external#quartersManagement.xhtml"
+    NAME="output" PATH="/web/workers/external/quartersManagement.xhtml"
+    SHAPE="-1,16"
+    TARGET="rules:#web#workers#external#quartersManagement.xhtml" TITLE="BACK_TO_LIST"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#offer#offer.xhtml"
+  PATH="/web/workers/offer/offer.xhtml" SHAPE="304,513,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#offer#offer.xhtml:0" NAME="item" PATH="/web/workers/offer/offer.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="EDIT_RECORD::#web#workers#offer#editor#editForm.xhtml"
+    NAME="output" PATH="/web/workers/offer/editor/editForm.xhtml"
+    SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#editor#editForm.xhtml" TITLE="EDIT_RECORD"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="NEW_RECORD::#web#workers#offer#editor#editForm.xhtml"
+    NAME="output1" PATH="/web/workers/offer/editor/editForm.xhtml"
+    SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#editor#editForm.xhtml" TITLE="NEW_RECORD"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#offer#editor#editForm.xhtml"
+  PATH="/web/workers/offer/editor/editForm.xhtml" SHAPE="576,17,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#offer#editor#editForm.xhtml:0" NAME="item" PATH="/web/workers/offer/editor/editForm.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="SELECT_TRAVEL::#web#workers#offer#travel.xhtml" NAME="output"
+    PATH="/web/workers/offer/travel.xhtml" SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#travel.xhtml" TITLE="SELECT_TRAVEL"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="BACK_TO_LIST::#web#workers#offer#offer.xhtml" NAME="output1"
+    PATH="/web/workers/offer/offer.xhtml" SHAPE="-1,40"
+    TARGET="rules:#web#workers#offer#offer.xhtml" TITLE="BACK_TO_LIST"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="SELECT_QUARTER::#web#workers#external#quartersManagement.xhtml"
+    NAME="output2" PATH="/web/workers/external/quartersManagement.xhtml"
+    SHAPE="-1,16"
+    TARGET="rules:#web#workers#external#quartersManagement.xhtml" TITLE="SELECT_QUARTER"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="SELECT_TRANSPORT::#web#workers#external#transportsManagement.xhtml"
+    NAME="output3"
+    PATH="/web/workers/external/transportsManagement.xhtml"
+    SHAPE="-1,24"
+    TARGET="rules:#web#workers#external#transportsManagement.xhtml" TITLE="SELECT_TRANSPORT"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#offer#travel.xhtml"
+  PATH="/web/workers/offer/travel.xhtml" SHAPE="304,33,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#offer#travel.xhtml:0" NAME="item" PATH="/web/workers/offer/travel.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="EDIT_RECORD::#web#workers#offer#travel#editForm.xhtml"
+    NAME="output" PATH="/web/workers/offer/travel/editForm.xhtml"
+    SHAPE="-1,24"
+    TARGET="rules:#web#workers#offer#travel#editForm.xhtml" TITLE="EDIT_RECORD"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="NEW_RECORD::#web#workers#offer#travel#editForm.xhtml"
+    NAME="output1" PATH="/web/workers/offer/travel/editForm.xhtml"
+    SHAPE="-1,24"
+    TARGET="rules:#web#workers#offer#travel#editForm.xhtml" TITLE="NEW_RECORD"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="ASSIGN2OFFERM::#web#workers#offer#editor#editForm.xhtml"
+    NAME="output2" PATH="/web/workers/offer/editor/editForm.xhtml"
+    SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#editor#editForm.xhtml" TITLE="ASSIGN2OFFERM"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#offer#travel#editForm.xhtml"
+  PATH="/web/workers/offer/travel/editForm.xhtml" SHAPE="576,497,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#web#workers#offer#travel#editForm.xhtml:0" NAME="item" PATH="/web/workers/offer/travel/editForm.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="BACK_TO_LIST::#web#workers#offer#travel.xhtml" NAME="output"
+    PATH="/web/workers/offer/travel.xhtml" SHAPE="-1,32"
+    TARGET="rules:#web#workers#offer#travel.xhtml" TITLE="BACK_TO_LIST"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

@@ -81,7 +81,7 @@
 
 	<bean id="userDataManager" class="travel.data.managers.impl.UserDataManagerImpl" parent="commonManager"/>
 	<bean id="expeditionDataManager" class="travel.data.managers.impl.ExpeditionDataManagerImpl" parent="commonManager"/>
-	
+	<bean id="offerDataManager" class="travel.data.managers.impl.OfferDataManagerImpl" parent="commonManager"/>
 	<bean id="externalDataManager" class="travel.data.managers.impl.ExternalDataManagerImpl" parent="commonManager"/>	
 			
 	<!-- /DATA MANAGERS -->
