@@ -23,14 +23,6 @@ public class ExternalFacadeImpl implements ExternalFacade {
 		this.dataManager = dataManager;
 	}
 
-	@Override
-	public List<Quarter> getQuarterList() {
-		
-		System.out.println("fdsfs");
-		List<Quarter> result=dataManager.getQuarters();
-		System.out.println(result.get(0).getOffers());
-		return result;
-	}
 
 	@Override
 	public List<Transport> findTransportsByCriteria(Criteria criteria) {
@@ -44,8 +36,24 @@ public class ExternalFacadeImpl implements ExternalFacade {
 
 	@Override
 	public void saveOrUpdate(Transport entry, ModyficationType modType) {
-		dataManager.saveOrUpdate(entry,modType);
-		// TODO Auto-generated method stub
+		dataManager.saveOrUpdate(entry,modType);		
+	}
+
+	@Override
+	public void saveOrUpdate(Quarter entry, ModyficationType modType) {
+		dataManager.saveOrUpdate(entry, modType);
+		
+	}
+
+	@Override
+	public List<Quarter> findQuartersByCriteria(
+			travel.jsf.mBeans.bBeans.external.quarter.Criteria criteria) {
+		return dataManager.findQuartersByCriteria(criteria);
+	}
+
+	@Override
+	public void removeQuarterById(Integer chosenId) {
+		dataManager.removeQuarterById(chosenId);
 		
 	}
 }

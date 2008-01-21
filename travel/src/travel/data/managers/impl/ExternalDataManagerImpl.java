@@ -15,12 +15,6 @@ import travel.jsf.mBeans.bBeans.external.transport.Criteria;
 public class ExternalDataManagerImpl extends CommonManager implements ExternalDataManager{
 
 	@Override
-	public List<Quarter> getQuarters() {
-		logger.info("Pobieram kwatery");
-		return getHibernateTemplate().find("from Quarter");
-	}
-
-	@Override
 	public List<Transport> findTransportsByCriteria(Criteria crit) {
 		logger.info("Searching transports by Criteria:");
 		DetachedCriteria criteria=DetachedCriteria.forClass(Transport.class);
@@ -46,12 +40,47 @@ public class ExternalDataManagerImpl extends CommonManager implements ExternalDa
 	@Override
 	public void saveOrUpdate(Transport entry, ModyficationType modType) {
 		logger.info("Dodawewanie");
-		if (modType==ModyficationType.INSERT)
-		{
+		if (modType==ModyficationType.INSERT){
 			getHibernateTemplate().save(entry);
 		}
 		else getHibernateTemplate().update(entry);
 		
+		
+	}
+
+	@Override
+	public List<Quarter> findQuartersByCriteria(
+			travel.jsf.mBeans.bBeans.external.quarter.Criteria crit) {
+		logger.info("Searching quarters by Criteria:");
+		DetachedCriteria criteria=DetachedCriteria.forClass(Quarter.class);
+		Quarter exampleQuart=new Quarter();
+		
+		exampleQuart.setName("".equals(crit.getName()) ? null : "%"+crit.getName()+"%");
+		exampleQuart.setAddress("".equals(crit.getAddress()) ? null : "%"+crit.getAddress()+"%");
+		exampleQuart.setType(crit.getChosenType());
+		exampleQuart.setLuxury(crit.getChosenLuxury());
+		
+		Example example=Example.create(exampleQuart);
+		example.enableLike();
+		criteria.add(example);
+		return getHibernateTemplate().findByCriteria(criteria);
+	}
+
+	@Override
+	public void removeQuarterById(Integer chosenId) {
+		Quarter qu=(Quarter) getHibernateTemplate().get(Quarter.class, chosenId);
+		getHibernateTemplate().delete(qu);
+		logger.info("Object of id: "+chosenId+" was removed");
+		
+	}
+
+	@Override
+	public void saveOrUpdate(Quarter entry, ModyficationType modType) {
+		logger.info("Dodawewanie");
+		if (modType==ModyficationType.INSERT){
+			getHibernateTemplate().save(entry);
+		}
+		else getHibernateTemplate().update(entry);
 		
 	}
 

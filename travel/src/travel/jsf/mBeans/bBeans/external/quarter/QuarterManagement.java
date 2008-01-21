@@ -1,4 +1,4 @@
-package travel.jsf.mBeans.bBeans.external.transport;
+package travel.jsf.mBeans.bBeans.external.quarter;
 
 import java.util.List;
 
@@ -10,16 +10,20 @@ import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import travel.business.facades.ExternalFacade;
 import travel.commons.Constants;
 import travel.commons.enums.others.ModyficationType;
-import travel.data.entities.jpa.Transport;
+import travel.data.entities.jpa.Quarter;
+import travel.data.entities.jpa.Travel;
+import travel.jsf.mBeans.bBeans.external.quarter.Criteria;
+import travel.jsf.mBeans.bBeans.external.quarter.EditForm;
 import travel.jsf.mBeans.bBeans.trip.offer.OfferManagement;
 import travel.jsf.mBeans.commons.BaseBean;
 import travel.jsf.mBeans.commons.BeanName;
 import travel.jsf.uitls.FacesUtils;
 
-public class TransportManagement extends BaseBean {
+public class QuarterManagement extends BaseBean {
+
 	private ExternalFacade externalFacade;
 	private Criteria criteria=new Criteria();
-	private List<Transport> filteredTransportsList;
+	private List<Quarter> filteredQuarterList;
 	private Integer amountItems;
 	private Integer chosenId;
 	private EditForm editForm; 
@@ -29,9 +33,9 @@ public class TransportManagement extends BaseBean {
 
 	public UIOutput getUiTitle() {
 		if (sourceSite==null) {
-			uiTitle.setValue("Zarządzanie środkami transportu");
+			uiTitle.setValue("Zarządzanie Kwaterami");
 		} else {
-			uiTitle.setValue("Wybierz transport:");
+			uiTitle.setValue("Wybierz kwaterę:");
 		}
 		return uiTitle;
 	}
@@ -40,16 +44,22 @@ public class TransportManagement extends BaseBean {
 		this.uiTitle = uiTitle;
 	}
 
+	public List<Quarter> getFilteredQuarterList() {
+		return filteredQuarterList;
+	}
 
+	public void setFilteredQuarterList(List<Quarter> filteredQuarterList) {
+		this.filteredQuarterList = filteredQuarterList;
+	}
 
 	public void fillTable(ActionEvent e) {
-		filteredTransportsList=externalFacade.findTransportsByCriteria(criteria);
-		amountItems=filteredTransportsList.size();
+		filteredQuarterList=externalFacade.findQuartersByCriteria(criteria);
+		amountItems=filteredQuarterList.size();
 	}
 
 	public void removeRecord(ActionEvent e) {
-		logger.info("Removing transport record of id: {}", chosenId);
-		externalFacade.removeTransportById(chosenId);
+		logger.info("Removing quarter record of id: {}", chosenId);
+		externalFacade.removeQuarterById(chosenId);
 	}
 	
 	public String go2NewForm() {
@@ -61,19 +71,18 @@ public class TransportManagement extends BaseBean {
 	public String go2EditForm() {
 		editForm=new EditForm(this);
 		editForm.setModType(ModyficationType.UPDATE);
-		for (Transport t : filteredTransportsList) {
+		for (Quarter t : filteredQuarterList) {
 			if (t.getId().equals(chosenId)) {
 				editForm.entry=t;
-				//editForm.setChosenType(t.getType());
 				break;
 			}
 		}
 		return Constants.EDIT_RECORD;
 	}
 	
-	public String selectTransport() {
+	public String selectQuarter() {
 		sourceSite=FacesUtils.getRequestParameter("source");
-		return "SELECT_TRANSPORT";
+		return "SELECT_QUARTER";
 	}
 	
 	public String go2SourceSite() {
@@ -81,15 +90,15 @@ public class TransportManagement extends BaseBean {
 		//beforePhase jest dopiero w wersji 1.2, moze w 2.0 bedzie w koncu obsługa GET
 		if (sourceSite.equals(BeanName.OFFER_MANAGEMENT)) {
 			OfferManagement offerm=(OfferManagement) FacesUtils.getManagedBean(BeanName.OFFER_MANAGEMENT);
-			offerm.getEditForm().getEntry().getTransport().setId(chosenId);
-			String company=null;
-			for (Transport transport : filteredTransportsList) {
-				if (transport.getId().equals(chosenId)) {
-					company=transport.getCompany();
+			offerm.getEditForm().getEntry().getQuarter().setId(chosenId);
+			String name=null;
+			for (Quarter quarter : filteredQuarterList) {
+				if (quarter.getId().equals(chosenId)) {
+					name=quarter.getName();
 					break;
 				}
 			}
-			offerm.getEditForm().getEntry().getTransport().setCompany(company);
+			offerm.getEditForm().getEntry().getQuarter().setName(name);
 
 		}	
 		
@@ -129,13 +138,8 @@ public class TransportManagement extends BaseBean {
 	}
 	
 	
-	public List<Transport> getFilteredTransportsList() {
-		return filteredTransportsList;
-	}
 
-	public void setFilteredTransportsList(List<Transport> filteredTransportsList) {
-		this.filteredTransportsList = filteredTransportsList;
-	}
+	
 	
 	public EditForm getEditForm() {
 		return editForm;
@@ -143,6 +147,10 @@ public class TransportManagement extends BaseBean {
 
 	public void setEditForm(EditForm editForm) {
 		this.editForm = editForm;
+	}
+	
+	public QuarterManagement() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getSourceSite() {
@@ -152,4 +160,5 @@ public class TransportManagement extends BaseBean {
 	public void setSourceSite(String sourceSite) {
 		this.sourceSite = sourceSite;
 	}
+
 }

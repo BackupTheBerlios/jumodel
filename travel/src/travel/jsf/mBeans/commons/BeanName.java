@@ -7,5 +7,7 @@ public interface BeanName {
 	String APPLICATION_CONTEXT="appCtx";
 	String REGISTRATION="reg";
 	String TRANSPORT_MANAGEMENT="transm";
-	
+	String QUARTER_MANAGEMENT="quarterm";
+	String OFFER_MANAGEMENT="offerm";
+	String TRAVEL_MANAGEMENT="travelm";
 }

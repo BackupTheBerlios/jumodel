@@ -29,6 +29,7 @@ public class Category implements Serializable {
 	public Category() {
 		super();
 	}
+	
 
 	public Integer getId() {
 		return id;

@@ -3,25 +3,25 @@ package travel.jsf.mBeans.bBeans.external.transport;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
-import travel.business.facades.ExternalFacade;
-import travel.commons.Constants;
 import travel.commons.enums.TransportType;
 import travel.commons.enums.others.ModyficationType;
 import travel.data.entities.jpa.Transport;
-import travel.jsf.converters.auxiliary.DefaultSelectItem;
 import travel.jsf.uitls.FacesUtils;
 
 public class EditForm {
 	public Transport entry;
-	private TransportType chosenType;
 	private ModyficationType modType;
-	private ExternalFacade externalFacade;
-	public String saveTransport(){
-		externalFacade.saveOrUpdate(entry,modType);
-		FacesUtils.addInfoMessage("Zastaly  zapisane zminay");
-		return Constants.SUCCESS;
+	private TransportManagement parent;
+	
+	public void saveTransport(ActionEvent e){
+		parent.getExternalFacade().saveOrUpdate(entry,modType);
+		parent.fillTable(null); //refreshing parent list
+		
+		entry=new Transport();
+		FacesUtils.addInfoMessage("Zmiany zostały zapisane pomyślnie.");
 		
 	}
 	private List<SelectItem> transportTypes;
@@ -41,16 +41,9 @@ public class EditForm {
 		this.transportTypes = transportTypes;
 	}
 
-	public TransportType getChosenType() {
-		return chosenType;
-	}
 
-	public void setChosenType(TransportType chosenType) {
-		this.chosenType = chosenType;
-	}
-
-	public EditForm(ExternalFacade externalFacade) {
-		this.externalFacade=externalFacade;
+	public EditForm(TransportManagement parent) {
+		this.parent=parent;
 		entry=new Transport();
 	}
 

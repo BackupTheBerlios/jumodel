@@ -4,7 +4,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 public class AppContext {
-	private String baseUrl;
 	private String imgRes;
 	private String cssRes;
 	private String mainRes;
@@ -47,21 +46,15 @@ public class AppContext {
 	}
 
 	public String getBaseUrl() {
-		if (baseUrl==null) {
-			HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			String path = request.getContextPath();
-			baseUrl=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-		}
-		return baseUrl;
+		HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		String path = request.getContextPath();
+		return request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	}
 	
 	public String go2Home() {
 		return "HOME";
 	}
 	
-	public void setBaseUrl(String baseUrl) {
-		this.baseUrl = baseUrl;
-	}
 	public String getImgRes() {
 		return imgRes;
 	}

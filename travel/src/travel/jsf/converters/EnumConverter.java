@@ -5,13 +5,15 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
+import travel.commons.Constants;
+
 public class EnumConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) throws ConverterException {
 		if (value==null) return null;
-		if (value.equals("---")) return null;
+		if (value.equals(Constants.EMPTY_OPTION)) return null;
 		String className=value.split(";")[0];
 		String enumName=value.split(";")[1];
 		Enum enumm=null;
@@ -29,7 +31,7 @@ public class EnumConverter implements Converter {
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) throws ConverterException {
 		if (value==null) return null;
-		if (value instanceof Integer) return "---";
+		if (value instanceof Integer) return Constants.EMPTY_OPTION;
 		
 		return value.getClass().getName()+";"+((Enum)value).name();
 	}
