@@ -1,1 +1,2 @@
-document.getElementById()
+var el=document.getElementById();
+el.

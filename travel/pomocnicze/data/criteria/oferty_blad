@@ -1,0 +1,39 @@
+	public List<Offer> findOffersByCriteria(OfferCriteria crit) {
+		logger.info("Searching offers by Criteria:");
+		DetachedCriteria criteria=DetachedCriteria.forClass(Offer.class);
+		
+		Offer exampleOffer=new Offer();
+		Quarter exampleQuarter=new Quarter();
+		Transport exampleTransport=new Transport();
+		Travel exampleTravel=new Travel();
+		
+		exampleOffer.setName("".equals(crit.getName()) ? null : "%" + crit.getName() + "%");
+		exampleQuarter.setLuxury(crit.getQuarterLuxury());
+		exampleQuarter.setType(crit.getQuarterType());
+		exampleTransport.setType(crit.getTransportType());
+		exampleTravel.setCountry("".equals(crit.getCountry()) ? null : "%" + crit.getCountry() + "%");
+		
+		Example example=Example.create(exampleOffer);
+		example.enableLike();
+		
+		Example travelExample=Example.create(exampleTravel);
+		travelExample.enableLike();
+		
+		criteria.add(example);
+		if (crit.getCategory()!=null)
+			criteria.add(Restrictions.eq("category", crit.getCategory()));
+		if (crit.getPromotion()!=null) {
+			DetachedCriteria offerPromotionCrit=criteria.createCriteria("offerPromotions");
+			offerPromotionCrit.add(Restrictions.eq("promotion", crit.getPromotion()));
+		}
+		
+		DetachedCriteria quartCrit=criteria.createCriteria("quarter");
+		quartCrit.add(Example.create(exampleQuarter));
+		DetachedCriteria transCrit=criteria.createCriteria("transport");
+		transCrit.add(Example.create(exampleTransport));
+		DetachedCriteria travelCrit=criteria.createCriteria("travel");
+		travelCrit.add(Example.create(exampleTravel));
+		
+		
+		return getHibernateTemplate().findByCriteria(criteria);
+	}
