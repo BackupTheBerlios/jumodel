@@ -120,6 +120,16 @@
    <value>#{offerFacade}</value>
   </managed-property>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>expem</managed-bean-name>
+  <managed-bean-class>travel.jsf.mBeans.bBeans.trip.expedition.ExpeditionManagement</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+  <managed-property>
+   <property-name>expeditionFacade</property-name>
+   <property-class>travel.business.facades.ExpeditionFacade</property-class>
+   <value>#{expeditionFacade}</value>
+  </managed-property>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
@@ -135,7 +145,7 @@
    <to-view-id>/web/clients/register.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>WORKER_REGISTER</from-outcome>
+   <from-outcome>USER_REGISTER</from-outcome>
    <to-view-id>/web/managers/register.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
@@ -149,6 +159,15 @@
   <navigation-case>
    <from-outcome>OFFER_MANAGE</from-outcome>
    <to-view-id>/web/workers/offer/offer.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>EXPEDITION_MANAGE</from-outcome>
+   <to-view-id>/web/workers/expedition/expedition.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>USER_LOGOUT</from-outcome>
+   <to-view-id>/web/main/home.xhtml</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>

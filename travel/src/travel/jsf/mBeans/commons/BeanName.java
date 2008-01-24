@@ -10,4 +10,5 @@ public interface BeanName {
 	String QUARTER_MANAGEMENT="quarterm";
 	String OFFER_MANAGEMENT="offerm";
 	String TRAVEL_MANAGEMENT="travelm";
+	String EXPEDITION_MANAGEMENT="expem";
 }

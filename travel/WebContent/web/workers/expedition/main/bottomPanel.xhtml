@@ -1,0 +1,35 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+	
+	<h:form>
+	<rich:panel style="text-align:right">
+		<h:commandButton action="#{expem.go2NewForm}" value="Dodaj nowy" styleClass="Button" id="addEntry" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+			
+	 	</h:commandButton>
+	 
+	 	<rich:spacer width="5px"></rich:spacer>
+	 	 <a4j:commandButton action="Pokaz ekspedycje" value="Pokaz ekspedycje" styleClass="Button" id="selectEntry" onclick="if (rowId==null) return onClickSelectBtn(); else onClickSelectBtn();" >
+	 		<a4j:actionparam name="id" value="rowId" assignTo="#{expem.chosenId}" noEscape="true" />
+	 	 </a4j:commandButton>
+	</rich:panel>
+	</h:form>	
+	<script type="text/javascript">	
+		//<![CDATA[
+			function onClickSelectBtn() {
+				if (rowId==null) {
+					alert('Musisz zaznaczyć jakiś wiersz');
+					return false;
+				}
+				//showCloud();
+				//moveCloud('Proszę czekać...');
+			}
+	    //]]>
+		</script>
+</ui:component>

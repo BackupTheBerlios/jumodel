@@ -1,0 +1,104 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	  	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a4j="http://richfaces.org/a4j"
+      	xmlns:rich="http://richfaces.org/rich"
+      	xmlns:c="http://java.sun.com/jstl/core"
+      	xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+
+		<h:form id="expeditionGridForm">
+	 	<rich:dataTable value="#{expem.filteredExpeditionsList}" var="row" id="filteredExpeditionList"
+	 	  	onRowMouseOver="mouseOver(this)"
+			onRowMouseOut="mouseOut(this)" 
+			onRowClick="selectRow(this);"
+			width="100%" rows="5" onRowDblClick="editRow(this)" >
+		
+	 		<f:facet name="header">
+	 			<rich:columnGroup>
+	 				<rich:column>ID</rich:column>
+	 				<rich:column>Data od</rich:column>
+	 				<rich:column>Data do</rich:column>
+	 				<rich:column>Ilośc miejsc</rich:column>
+	 				<rich:column>Kraj</rich:column>
+	 				<rich:column>Miejsce</rich:column>
+	 				<rich:column style="width:30px"> </rich:column>
+	 				<rich:column style="width:30px"> </rich:column>
+	 			</rich:columnGroup>
+	 		</f:facet>
+	 		
+	 		<h:column>
+	 			<h:outputFormat value="{0,number,00000}">
+	 				<f:param value="#{row.id}" />
+	 			</h:outputFormat>
+	 		</h:column>
+	 		<h:column>#{row.id}</h:column>
+	 		<h:column>#{row.dateFrom}</h:column>
+	 		<h:column>#{row.dateTo}</h:column>
+	 		<h:column>#{row.amountOfPlaces}</h:column>
+	 		<h:column>#{row.offer.travel.country}</h:column>
+	 		<h:column>#{row.offer.travel.place}</h:column>
+	 		<h:column>
+	 			<h:commandLink action="#{expem.go2EditForm}" id="Edycja" onclick="showCloud();moveCloud('Ładowanie formatki edycyjnej...');">
+	 				<h:graphicImage value="#{appCtx.imgRes}/preverify.gif" styleClass="Image"></h:graphicImage>
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{expem.chosenId}"></a4j:actionparam>
+	 			</h:commandLink>
+	 		</h:column>
+	 		<h:column>
+				<a4j:commandLink actionListener="#{expem.removeRecord}" id="Usuniecie" oncomplete="pokaz();">
+	 				<a4j:actionparam name="id" value="#{row.id}" assignTo="#{expem.chosenId}"></a4j:actionparam>
+	 				<h:graphicImage value="#{appCtx.imgRes}/delete.gif" styleClass="Image"></h:graphicImage>
+	 			</a4j:commandLink>
+			</h:column>
+	 		
+	 		<f:facet name="footer">
+	 			total: #{expem.amountItems}
+	 		</f:facet>
+	 	</rich:dataTable>
+	 	<rich:spacer height="10" />
+	 	<rich:datascroller id="dataScroller" stepControls="auto" for="filteredExpeditionList" maxPages="10" />
+   		</h:form>
+   		
+   		
+   		<script type="text/javascript">	
+		//<![CDATA[
+			var currRowSelected=null;
+			var rowId=null;
+			function selectRow(row) {
+				if (currRowSelected!=null)
+					currRowSelected.style.backgroundColor='#{a4jSkin.tableBackgroundColor}';
+				row.style.backgroundColor='#FFFFAF';
+				rowId=row.firstChild.textContent;
+				currRowSelected=row;
+			
+			}
+			
+			function mouseOver(row) {
+				if (row!=currRowSelected)
+					row.style.backgroundColor='#F1F1F1';
+			}
+			
+			function mouseOut(row) {
+				if (row!=currRowSelected)
+					row.style.backgroundColor='#{a4jSkin.tableBackgroundColor}';
+			}
+		  	function editRow(el) {
+				//alert(el.sectionRowIndex);
+				var splitedIdArray=el.firstChild.id.split(':');
+				var rowNrId=splitedIdArray[2];
+				var btnEdycja=document.getElementById("expeditionGridForm:filteredExpeditionList:"+rowNrId+":Edycja");
+				btnEdycja.onclick();
+			}
+			
+			function pokaz() {
+				var btnPokaz=document.getElementById("criteriaForm:Pokaz");
+				btnPokaz.onclick();
+			}
+	    //]]>
+		</script>
+		
+		 
+	
+		
+</ui:component>

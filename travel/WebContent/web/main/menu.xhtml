@@ -1,4 +1,4 @@
-<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	<ui:component xmlns="http://www.w3.org/1999/xhtml"
 	  	xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:h="http://java.sun.com/jsf/html"
 		xmlns:f="http://java.sun.com/jsf/core"
@@ -18,24 +18,30 @@
     	<rich:toolBarGroup>
         	<rich:dropDownMenu value="Logowanie">
 	        	<rich:menuItem value="Zaloguj" rendered="#{!user.logged}" submitMode="none" onclick="Richfaces.showModalPanel('logowanie',{width:450, top:200})"></rich:menuItem>
-	        	<rich:menuItem value="Zapomniałem hasła" rendered="#{!user.logged}"></rich:menuItem>
+	        	<!-- <rich:menuItem value="Zapomniałem hasła" rendered="#{!user.logged}"></rich:menuItem>-->
 	        	<rich:menuSeparator rendered="#{!user.logged}"/>
 	        	<rich:menuItem value="Zarejestruj się" rendered="#{!user.logged}" action="CLIENT_REGISTER"></rich:menuItem>
-	        	<rich:menuItem value="Zarejestruj pracownika" rendered="#{user.role == 'MANAGER'}" action="WORKER_REGISTER"></rich:menuItem>
+	        	<rich:menuItem value="Zarejestruj użytkownika" rendered="#{user.role == 'MANAGER'}" action="USER_REGISTER"></rich:menuItem>
 	        	
 	        	<rich:menuItem action="#{auth.logout}" value="Wyloguj" rendered="#{user.logged}"></rich:menuItem>       
 	        </rich:dropDownMenu>
-	        <rich:dropDownMenu value="Oferty">
-	        	<rich:menuItem value="Zarządzanie ofertami" action="OFFER_MANAGE"></rich:menuItem>
-	        	<rich:menuItem value="Zarządzanie wycieczkami" action="TRAVEL_MANAGE"></rich:menuItem>
-	        </rich:dropDownMenu>
-	        <rich:dropDownMenu value="Dane zewnętrzne">
-	        	<rich:menuItem value="Zarządzanie środkami transportu" action="TRANSPORT_MANAGE"></rich:menuItem>
-	        	<rich:menuItem value="Zarządzanie kwaterami" action="QUARTER_MANAGE"></rich:menuItem>
-	        	<rich:menuItem value="Wyszukaj ofertę"></rich:menuItem>
+	        <rich:dropDownMenu value="Oferty" rendered="#{user.role == 'EMPLOYEE'}">
+	        	<rich:menuItem value="Zarządzanie ofertami"  action="OFFER_MANAGE"></rich:menuItem>
+	        	<rich:menuItem value="Zarządzanie wycieczkami"  action="TRAVEL_MANAGE"></rich:menuItem>
+	        	<rich:menuItem value="Zarządzanie ekspedycjami"  action="EXPEDITION_MANAGE"></rich:menuItem>
 	        </rich:dropDownMenu>
 	        
-	        <rich:dropDownMenu value="Moje konto" rendered="true">
+	        <rich:dropDownMenu value="Oferty" rendered="#{user.role == 'CUSTOMER'}">
+	        	<rich:menuItem value="Zarządzanie ofertami"  action="OFFER_MANAGE"></rich:menuItem>
+	     		<rich:menuItem value="Zarządzanie ekspedycjami"  action="EXPEDITION_MANAGE"></rich:menuItem>
+	        </rich:dropDownMenu>
+	        
+	        <rich:dropDownMenu value="Dane zewnętrzne" rendered="#{user.role == 'EMPLOYEE'}">
+	        	<rich:menuItem value="Zarządzanie środkami transportu"  action="TRANSPORT_MANAGE"></rich:menuItem>
+	        	<rich:menuItem value="Zarządzanie kwaterami" action="QUARTER_MANAGE"></rich:menuItem>
+	        </rich:dropDownMenu>
+	        
+	        <rich:dropDownMenu value="Moje konto"  rendered="#{user.role == 'CUSTOMER'}">
 	        	<rich:menuItem value="Pokaż moje rezerwacje"></rich:menuItem>
 	        	<rich:menuItem value="Mój Profil"></rich:menuItem>
 	        </rich:dropDownMenu>

@@ -15,9 +15,9 @@
     PATH="/web/clients/register.xhtml" SHAPE="-1,56"
     TARGET="rules:#web#clients#register.xhtml" TITLE="CLIENT_REGISTER"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="WORKER_REGISTER::#web#managers#register.xhtml" NAME="output2"
+    ID="USER_REGISTER::#web#managers#register.xhtml" NAME="output2"
     PATH="/web/managers/register.xhtml" SHAPE="-1,64"
-    TARGET="rules:#web#managers#register.xhtml" TITLE="WORKER_REGISTER"/>
+    TARGET="rules:#web#managers#register.xhtml" TITLE="USER_REGISTER"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="TRANSPORT_MANAGE::#web#workers#external#transportsManagement.xhtml"
     NAME="output3"
@@ -33,14 +33,22 @@
     ID="OFFER_MANAGE::#web#workers#offer#offer.xhtml" NAME="output5"
     PATH="/web/workers/offer/offer.xhtml" SHAPE="-1,40"
     TARGET="rules:#web#workers#offer#offer.xhtml" TITLE="OFFER_MANAGE"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="EXPEDITION_MANAGE::#web#workers#expedition#expedition.xhtml"
+    NAME="output7" PATH="/web/workers/expedition/expedition.xhtml"
+    SHAPE="-1,72"
+    TARGET="rules:#web#workers#expedition#expedition.xhtml" TITLE="EXPEDITION_MANAGE"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="USER_LOGOUT::#web#main#home.xhtml" NAME="output9"
+    PATH="/web/main/home.xhtml" TARGET="rules:#web#main#home.xhtml" TITLE="USER_LOGOUT"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#main#home.xhtml" PATH="/web/main/home.xhtml"
-  SHAPE="304,657,0,0" persistent="true"/>
+  SHAPE="304,689,0,0" persistent="true"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#clients#register.xhtml"
-  PATH="/web/clients/register.xhtml" SHAPE="304,769,0,0">
+  PATH="/web/clients/register.xhtml" SHAPE="304,801,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#clients#register.xhtml:0" NAME="item" PATH="/web/clients/register.xhtml">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
@@ -51,10 +59,10 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#managers#register.xhtml"
-  PATH="/web/managers/register.xhtml" SHAPE="304,881,0,0" persistent="true"/>
+  PATH="/web/managers/register.xhtml" SHAPE="304,913,0,0" persistent="true"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#workers#external#transportsManagement.xhtml"
-  PATH="/web/workers/external/transportsManagement.xhtml" SHAPE="304,337,0,0">
+  PATH="/web/workers/external/transportsManagement.xhtml" SHAPE="304,369,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#workers#external#transportsManagement.xhtml:0"
    NAME="item" PATH="/web/workers/external/transportsManagement.xhtml">
@@ -77,7 +85,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#workers#external#transport#editForm.xhtml"
-  PATH="/web/workers/external/transport/editForm.xhtml" SHAPE="576,321,0,0">
+  PATH="/web/workers/external/transport/editForm.xhtml" SHAPE="576,353,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#workers#external#transport#editForm.xhtml:0"
    NAME="item" PATH="/web/workers/external/transport/editForm.xhtml">
@@ -126,7 +134,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#workers#offer#offer.xhtml"
-  PATH="/web/workers/offer/offer.xhtml" SHAPE="304,513,0,0">
+  PATH="/web/workers/offer/offer.xhtml" SHAPE="304,545,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#workers#offer#offer.xhtml:0" NAME="item" PATH="/web/workers/offer/offer.xhtml">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
@@ -191,7 +199,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#web#workers#offer#travel#editForm.xhtml"
-  PATH="/web/workers/offer/travel/editForm.xhtml" SHAPE="576,497,0,0">
+  PATH="/web/workers/offer/travel/editForm.xhtml" SHAPE="576,529,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem"
    ID="rules:#web#workers#offer#travel#editForm.xhtml:0" NAME="item" PATH="/web/workers/offer/travel/editForm.xhtml">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
@@ -200,4 +208,7 @@
     TARGET="rules:#web#workers#offer#travel.xhtml" TITLE="BACK_TO_LIST"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#web#workers#expedition#expedition.xhtml"
+  PATH="/web/workers/expedition/expedition.xhtml" SHAPE="304,1025,0,0" persistent="true"/>
 </PROCESS>

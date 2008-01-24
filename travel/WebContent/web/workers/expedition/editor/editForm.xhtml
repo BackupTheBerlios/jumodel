@@ -1,0 +1,93 @@
+<ui:composition template="#{appCtx.mainRes}/layouts/mainLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      	 
+    <ui:define name="content">
+    <a4j:region id="editRegion">
+ 		<t:saveState id="savingOfferBean" value="#{offerm}"></t:saveState>
+    	<h:outputText value="Dodawanie nowej oferty" rendered="#{offerm.editForm.modType=='INSERT'}" ></h:outputText>
+		<h:outputText value="Edycja danych oferty" rendered="#{offerm.editForm.modType=='UPDATE'}" ></h:outputText>
+		
+		 		 
+    	<h:form id="editForm">
+	    	<rich:simpleTogglePanel label="Formularz edycyjny" switchType="client" width="500px" id="mainPanel">
+	    		<t:panelGrid columns="2" styleClass="PanelGrid" headerClass="Center"> 		
+	    			<f:facet name="header" >
+	    				<t:div styleClass="Center" style="height:40px; overflow: auto;text-align:left;">
+							<rich:messages id="edit_msgs" errorStyle="color:red"  tooltip="true" showDetail="true" ajaxRendered="true"></rich:messages>
+						</t:div>
+	    			</f:facet>    	 		
+	       	 		
+					<h:outputLabel value="Nazwa" for="name"/>
+	    			<h:inputText value="#{offerm.editForm.entry.name}" id="name" size="30"></h:inputText>
+
+					<h:outputLabel value="Cena" for="Price"/>
+					<h:panelGroup>
+	    				<h:inputText value="#{offerm.editForm.entry.price}" id="Price" size="7"></h:inputText>
+	    				zł
+	    			</h:panelGroup>
+	       	 		
+		    		<h:outputLabel value="Wycieczka *" for="travelIT"/>
+		    		<h:panelGroup>
+			    		<h:inputText disabled="true" styleClass="InputText" required="true" id="travelIT" value="#{offerm.editForm.entry.travel.name}" size="35">
+			    		</h:inputText>
+			    		<h:commandLink action="#{travelm.selectTravel}">
+			    			<f:param name="source" value="offerm"/>
+			    			<h:graphicImage value="#{appCtx.imgRes}/doc_search.gif" styleClass="Image"></h:graphicImage>
+			    		</h:commandLink>
+			    	</h:panelGroup>
+		    		
+		    		<h:outputLabel value="Transport *" for="transportIT"/>
+		    		<h:panelGroup>
+			    		<h:inputText value="#{offerm.editForm.entry.transport.company}" disabled="true" styleClass="InputText" required="true" id="transportIT">
+			    		</h:inputText>
+			    		<h:commandLink action="#{transm.selectTransport}">
+			    			<f:param name="source" value="offerm"/>
+			    			<h:graphicImage value="#{appCtx.imgRes}/doc_search.gif" styleClass="Image"></h:graphicImage>
+			    		</h:commandLink>		 
+			    	</h:panelGroup>
+			    		
+		    		<h:outputLabel value="Kwatera *" for="quarterIT"/>
+		    		<h:panelGroup>
+			    		<h:inputText value="#{offerm.editForm.entry.quarter.name}" styleClass="InputText" required="true" id="quarterIT" disabled="true">
+			    		</h:inputText>
+			    		<h:commandLink action="#{quarterm.selectQuarter}">
+			    			<f:param name="source" value="offerm"/>
+			    			<h:graphicImage value="#{appCtx.imgRes}/doc_search.gif" styleClass="Image"></h:graphicImage>
+			    		</h:commandLink>
+		    		</h:panelGroup>
+		    			
+		    		<h:outputLabel value="Kategoria" for="category"></h:outputLabel>
+					<h:selectOneMenu value="#{offerm.editForm.entry.category.id}" id="category">
+						<f:selectItems value="#{offerm.categories}"/>
+					</h:selectOneMenu>
+				
+					
+							
+				
+	    			<h:outputLabel value="Uwagi" for="Uwagi"/>
+	    			<h:inputTextarea value="#{offerm.editForm.entry.description}" id="Uwagi" rows="6" cols="40"></h:inputTextarea>
+	    			
+	    			<f:facet name="footer">
+	    				<h:panelGroup>
+	    					<h:commandButton action="BACK_TO_LIST" immediate="true" value="Powrót do listy" styleClass="Button"></h:commandButton>
+	    					<rich:spacer width="5px" ></rich:spacer>
+	    					<a4j:commandButton value="Zatwierdz" styleClass="Button" actionListener="#{offerm.editForm.saveOffer}" reRender="editForm"></a4j:commandButton>
+	    					<ui:include src="/web/main/common/ajaxLoading.xhtml" />
+	    				</h:panelGroup>
+	    			</f:facet>
+	    		</t:panelGrid>	
+	  
+	    	</rich:simpleTogglePanel>
+   		
+    	</h:form>
+    </a4j:region>
+    </ui:define>
+</ui:composition>
